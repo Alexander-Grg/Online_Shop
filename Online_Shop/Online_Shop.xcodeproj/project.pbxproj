@@ -26,6 +26,10 @@
 		627B2BDD286B42B900256E42 /* ResponseCodableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 627B2BDC286B42B900256E42 /* ResponseCodableTests.swift */; };
 		627B2BDF286B44BC00256E42 /* ChangeUserDataResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E0670C285C718100E71923 /* ChangeUserDataResult.swift */; };
 		627B2BE0286B44C100256E42 /* ChangeUserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E06719285CC6F600E71923 /* ChangeUserData.swift */; };
+		627B2BE2286B51FB00256E42 /* AuthTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 627B2BE1286B51FB00256E42 /* AuthTest.swift */; };
+		6280E707286D8B8E0065A04C /* ChangeUserDataTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6280E706286D8B8E0065A04C /* ChangeUserDataTest.swift */; };
+		6299B00E286C480800873DBE /* RegistrationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6299B00D286C480800873DBE /* RegistrationTest.swift */; };
+		6299B010286C949D00873DBE /* ContainerBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6299B00F286C949D00873DBE /* ContainerBuilder.swift */; };
 		62E06709285C705D00E71923 /* RegisterUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E06708285C705D00E71923 /* RegisterUser.swift */; };
 		62E0670B285C713600E71923 /* Logout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E0670A285C713600E71923 /* Logout.swift */; };
 		62E06710285C79A500E71923 /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = 62E0670F285C79A500E71923 /* Swinject */; };
@@ -73,6 +77,10 @@
 		621F7B6928523E5E002AFA74 /* Online_ShopUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Online_ShopUITests.swift; sourceTree = "<group>"; };
 		621F7B6B28523E5E002AFA74 /* Online_ShopUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Online_ShopUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		627B2BDC286B42B900256E42 /* ResponseCodableTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseCodableTests.swift; sourceTree = "<group>"; };
+		627B2BE1286B51FB00256E42 /* AuthTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthTest.swift; sourceTree = "<group>"; };
+		6280E706286D8B8E0065A04C /* ChangeUserDataTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeUserDataTest.swift; sourceTree = "<group>"; };
+		6299B00D286C480800873DBE /* RegistrationTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationTest.swift; sourceTree = "<group>"; };
+		6299B00F286C949D00873DBE /* ContainerBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerBuilder.swift; sourceTree = "<group>"; };
 		62E06708285C705D00E71923 /* RegisterUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterUser.swift; sourceTree = "<group>"; };
 		62E0670A285C713600E71923 /* Logout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logout.swift; sourceTree = "<group>"; };
 		62E0670C285C718100E71923 /* ChangeUserDataResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeUserDataResult.swift; sourceTree = "<group>"; };
@@ -166,6 +174,9 @@
 			children = (
 				621F7B5F28523E5E002AFA74 /* Online_ShopTests.swift */,
 				627B2BDC286B42B900256E42 /* ResponseCodableTests.swift */,
+				6299B00D286C480800873DBE /* RegistrationTest.swift */,
+				627B2BE1286B51FB00256E42 /* AuthTest.swift */,
+				6280E706286D8B8E0065A04C /* ChangeUserDataTest.swift */,
 			);
 			path = Online_ShopTests;
 			sourceTree = "<group>";
@@ -210,6 +221,7 @@
 		621F7B7A28524541002AFA74 /* Assembly */ = {
 			isa = PBXGroup;
 			children = (
+				6299B00F286C949D00873DBE /* ContainerBuilder.swift */,
 			);
 			path = Assembly;
 			sourceTree = "<group>";
@@ -386,6 +398,7 @@
 				620EBB75285A12F100737F76 /* ErrorParser.swift in Sources */,
 				62E06718285CC00400E71923 /* RegistrationRequestFactory.swift in Sources */,
 				62E06714285CBD4700E71923 /* UserData.swift in Sources */,
+				6299B010286C949D00873DBE /* ContainerBuilder.swift in Sources */,
 				620EBB7B285A1DEE00737F76 /* RequestRouter.swift in Sources */,
 				62E06716285CBF2C00E71923 /* AuthRequestFactory.swift in Sources */,
 				62E0670B285C713600E71923 /* Logout.swift in Sources */,
@@ -405,8 +418,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6280E707286D8B8E0065A04C /* ChangeUserDataTest.swift in Sources */,
+				6299B00E286C480800873DBE /* RegistrationTest.swift in Sources */,
 				621F7B6028523E5E002AFA74 /* Online_ShopTests.swift in Sources */,
 				627B2BDD286B42B900256E42 /* ResponseCodableTests.swift in Sources */,
+				627B2BE2286B51FB00256E42 /* AuthTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -557,7 +573,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Online_Shop/Resources/Preview Content\"";
-				DEVELOPMENT_TEAM = 59ZJVMG2BA;
+				DEVELOPMENT_TEAM = 44W4ZX859Z;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -586,7 +602,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Online_Shop/Resources/Preview Content\"";
-				DEVELOPMENT_TEAM = 59ZJVMG2BA;
+				DEVELOPMENT_TEAM = 44W4ZX859Z;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -614,7 +630,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 59ZJVMG2BA;
+				DEVELOPMENT_TEAM = 44W4ZX859Z;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
 				MARKETING_VERSION = 1.0;
@@ -634,7 +650,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 59ZJVMG2BA;
+				DEVELOPMENT_TEAM = 44W4ZX859Z;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
 				MARKETING_VERSION = 1.0;
@@ -653,7 +669,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 59ZJVMG2BA;
+				DEVELOPMENT_TEAM = 44W4ZX859Z;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "testproject.com.alexgrg.Online-ShopUITests";
@@ -671,7 +687,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 59ZJVMG2BA;
+				DEVELOPMENT_TEAM = 44W4ZX859Z;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "testproject.com.alexgrg.Online-ShopUITests";

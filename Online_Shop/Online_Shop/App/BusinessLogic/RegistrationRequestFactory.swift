@@ -11,6 +11,6 @@ import Alamofire
 protocol RegistrationRequestFactory {
     func register(userData: UserData,
                   completionHandler:
-                  @escaping (AFDataResponse<LoginResult>)
+                  @escaping (AFDataResponse<RegisterUser>)
                   -> Void)
 }
