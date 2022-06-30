@@ -14,7 +14,7 @@ class ContainerBuilder: AbstractRequestFactory {
     var sessionManager = Session()
     let errorParser: AbstractErrorParser = ErrorParser()
     let queue = DispatchQueue.global(qos: .utility)
-
+    
     
     func makeContainer() -> Container {
         let container = Container()
@@ -39,7 +39,18 @@ class ContainerBuilder: AbstractRequestFactory {
                                   sessionManager: resolver.resolve(Session.self)!,
                                   queue: self.queue)
         }
+        
+        container.register(GetCatalogDataFactory.self) { resolver in
+            return GetCatalogData(errorParser: resolver.resolve(AbstractErrorParser.self)!,
+                                  sessionManager: resolver.resolve(Session.self)!,
+                                  queue: self.queue)
+        }
+        
+        container.register(GetSingleProductDataFactory.self) { resolver in
+            return GetSingleProductData(errorParser: resolver.resolve(AbstractErrorParser.self)!,
+                                        sessionManager: resolver.resolve(Session.self)!,
+                                        queue: self.queue)
+        }
         return container
     }
-
 }

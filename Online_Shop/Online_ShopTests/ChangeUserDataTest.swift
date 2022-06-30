@@ -12,19 +12,19 @@ class ChangeUserDataTest: XCTestCase {
     var expectation = XCTestExpectation(description: "ChangingUserDataTest...")
     var changeData: ChangeUserDataFactory!
     var isDataChanged: Bool!
-
+    
     override func setUpWithError() throws {
         let container = ContainerBuilder().makeContainer()
         let factory = RequestFactory(container: container)
         changeData = factory.makeChangeDataRequestFactory()
         isDataChanged = false
     }
-
+    
     override func tearDownWithError() throws {
         changeData = nil
         isDataChanged = nil
     }
-
+    
     func testChangeDataFunctional() {
         changeData.change(userData: userDataStub) { [weak self] response in
             switch response.result {

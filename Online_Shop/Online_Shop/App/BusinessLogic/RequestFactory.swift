@@ -27,4 +27,12 @@ class RequestFactory {
     func makeChangeDataRequestFactory() -> ChangeUserDataFactory {
         return container.resolve(ChangeUserDataFactory.self)!
     }
+    
+    func makeCatalogDataRequestFactory() -> GetCatalogDataFactory {
+        return container.resolve(GetCatalogDataFactory.self)!
+    }
+    
+    func makeSingleProductDataRequestFactory() -> GetSingleProductDataFactory {
+        return container.resolve(GetSingleProductDataFactory.self)!
+    }
 }

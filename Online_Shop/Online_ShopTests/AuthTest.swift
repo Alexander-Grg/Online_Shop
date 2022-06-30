@@ -24,7 +24,7 @@ class AuthTest: XCTestCase {
         isAuthSuccesfull = false
         isLogout = false
     }
-
+    
     override func tearDownWithError() throws {
         auth = nil
         isAuthSuccesfull = nil
