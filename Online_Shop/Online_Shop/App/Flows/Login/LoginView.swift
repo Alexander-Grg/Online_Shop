@@ -13,6 +13,7 @@ struct LoginView: View {
    @State private var password = ""
     
     var body: some View {
+        NavigationView {
         ZStack {
             GeometryReader { geometry in
                 Image("wallpaper")
@@ -34,10 +35,19 @@ struct LoginView: View {
                 Button("Sing In") {
                     self.viewModel.getData(login: login, password: password)
                 }
-                Button("Sign Up") {
-//                    <#code#>
+                .buttonStyle(.borderedProminent)
+                
+                NavigationLink {
+                    SignUpView(viewModel: SingUpViewModel())
+                } label: {
+//                    Button("Sign Up") {
+//                    }
+                    Text("Sign Up")
+            
                 }
+
             }
+        }
         }
     }
 }

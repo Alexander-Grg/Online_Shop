@@ -18,7 +18,7 @@ struct SignUpView: View {
     @State private var gender: Gender = .choose
     @State private var creditCard = ""
     @State private var bio = ""
-
+    
     var body: some View {
         
         VStack() {
@@ -54,16 +54,20 @@ struct SignUpView: View {
             Section {
                 Button("Register") {
                     let data = viewModel.createUser(id: id, username: username, password: password, email: email, gender: Gender(rawValue: gender.rawValue) ?? Gender.choose, creditCard: creditCard, bio: bio)
-
+                    
                     if !id.isEmpty && !username.isEmpty && !password.isEmpty && !email.isEmpty && !creditCard.isEmpty && !bio.isEmpty && data.gender != .choose  {
                         viewModel.register(userData: data)
-                        self.alertItem = AlertItem(title: Text("Success"), message: Text("You've been registered"))
                         
+                        DispatchQueue.main.asyncAfter(deadline: DispatchTime(uptimeNanoseconds: UInt64(5))) {
+                            if viewModel.isRegistered {
+                                self.alertItem = AlertItem(title: Text("Success"), message: Text("You've been registered"))
+                            } else {
+                                self.alertItem = AlertItem(title: Text("Error"), message: Text("Registration failed, check out your data, ID can contain only numbers"))
+                            }
+                        }
                     } else if !id.isEmpty && !username.isEmpty && !password.isEmpty && !email.isEmpty && !creditCard.isEmpty && !bio.isEmpty && data.gender == .choose {
                         self.alertItem = AlertItem(title: Text("Error"), message: Text("You need to choose a gender"))
-                        
                     } else {
-                        
                         self.alertItem = AlertItem(title: Text("Error"), message: Text("Each field needs to be filled"))
                     }
                 }
@@ -76,7 +80,9 @@ struct SignUpView: View {
                 viewModel.changeData(userData: newData)
                 
                 if viewModel.isDataChanged {
-                    self.alertItem = AlertItem(title: Text("Success"), message: Text("our data has been updated"))
+                    self.alertItem = AlertItem(title: Text("Success"), message: Text("Your data has been updated"))
+                } else {
+                    self.alertItem = AlertItem(title: Text("Error, try again"), message: Text("Data isn't updated, check out your data, ID can contain only numbers"))
                 }
             }
             .padding(.top, 10.0)
