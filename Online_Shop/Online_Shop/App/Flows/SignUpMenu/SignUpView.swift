@@ -1,0 +1,98 @@
+//
+//  SignUpView.swift
+//  Online_Shop
+//
+//  Created by Alexander Grigoryev on 7/14/22.
+//
+
+import SwiftUI
+
+struct SignUpView: View {
+    
+    @ObservedObject var viewModel: SingUpViewModel
+    @State private var alertItem: AlertItem?
+    @State private var id = ""
+    @State private var username = ""
+    @State private var password = ""
+    @State private var email = ""
+    @State private var gender: Gender = .choose
+    @State private var creditCard = ""
+    @State private var bio = ""
+
+    var body: some View {
+        
+        VStack() {
+            Text("Registration")
+                .font(.largeTitle)
+                .bold()
+            Text("Fill in your data for the registration, or update your current information")
+                .multilineTextAlignment(.center)
+                .padding(.top, 5.0)
+            Group {
+                TextField("User ID (Your unique number)", text: $id)
+                    .keyboardType(.numberPad)
+                TextField("Name", text: $username)
+                TextField("Password", text: $password)
+                TextField("Email", text: $email)
+                TextField("Credit Card", text: $creditCard)
+                TextField("Bio", text: $bio)
+            }
+            .textFieldStyle(.automatic)
+            .padding(.leading, 10.0)
+            
+            HStack {
+                Text("Gender")
+                    .foregroundColor(.gray)
+                Picker(selection: $gender, label: Text("Select Gender")) {
+                    Text("Choose...").tag(Gender.choose)
+                    Text("Male").tag(Gender.male)
+                    Text("Female").tag(Gender.female)
+                }
+                Spacer()
+            }
+            .padding(.leading, 10.0)
+            Section {
+                Button("Register") {
+                    let data = viewModel.createUser(id: id, username: username, password: password, email: email, gender: Gender(rawValue: gender.rawValue) ?? Gender.choose, creditCard: creditCard, bio: bio)
+
+                    if !id.isEmpty && !username.isEmpty && !password.isEmpty && !email.isEmpty && !creditCard.isEmpty && !bio.isEmpty && data.gender != .choose  {
+                        viewModel.register(userData: data)
+                        self.alertItem = AlertItem(title: Text("Success"), message: Text("You've been registered"))
+                        
+                    } else if !id.isEmpty && !username.isEmpty && !password.isEmpty && !email.isEmpty && !creditCard.isEmpty && !bio.isEmpty && data.gender == .choose {
+                        self.alertItem = AlertItem(title: Text("Error"), message: Text("You need to choose a gender"))
+                        
+                    } else {
+                        
+                        self.alertItem = AlertItem(title: Text("Error"), message: Text("Each field needs to be filled"))
+                    }
+                }
+            }   .buttonStyle(.bordered)
+            
+            Button("Update information") {
+                
+                let newData = viewModel.createUser(id: id, username: username, password: password, email: email, gender: Gender(rawValue: gender.rawValue) ?? Gender.choose, creditCard: creditCard, bio: bio)
+                
+                viewModel.changeData(userData: newData)
+                
+                if viewModel.isDataChanged {
+                    self.alertItem = AlertItem(title: Text("Success"), message: Text("our data has been updated"))
+                }
+            }
+            .padding(.top, 10.0)
+            .buttonStyle(.bordered)
+            
+            Spacer()
+            
+        }.alert(item: $alertItem) { alertItem in
+            Alert(title: alertItem.title, message: alertItem.message, dismissButton: alertItem.dismissButton)
+        }
+    }
+}
+
+struct SignUpView_Previews: PreviewProvider {
+    static var previews: some View {
+        SignUpView(viewModel: SingUpViewModel())
+    }
+}
+

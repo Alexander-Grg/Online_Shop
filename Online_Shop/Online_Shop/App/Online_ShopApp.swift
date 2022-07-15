@@ -12,7 +12,8 @@ struct Online_ShopApp: App {
     
     var body: some Scene {
         WindowGroup {
-      
+//            LoginView(viewModel: LoginViewModel())
+            SignUpView(viewModel: SingUpViewModel())
         }
     }
 }
