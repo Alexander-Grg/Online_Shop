@@ -40,7 +40,7 @@ extension GetSingleProductData {
     struct GetSingleProduct: RequestRouter {
         
         var baseUrl: URL
-        var method: HTTPMethod = .get
+        var method: HTTPMethod = .post
         var path: String = "getSingleProduct"
         
         let id: Int

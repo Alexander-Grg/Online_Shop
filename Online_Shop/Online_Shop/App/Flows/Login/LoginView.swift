@@ -44,11 +44,9 @@ struct LoginView: View {
                         } else {
                             self.alertItem = AlertItem(title: Text("Error"), message: Text("Please enter login and password"))
                         }
-                        DispatchQueue.main.asyncAfter(deadline: DispatchTime(uptimeNanoseconds: UInt64(5))) {
-                            if viewModel.loginResult {
+                            if viewModel.loginResult == true {
                                 self.isLogin = true
                             }
-                        }
                     }
                     .buttonStyle(.borderedProminent)
                 }

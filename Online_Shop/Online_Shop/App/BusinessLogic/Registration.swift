@@ -39,7 +39,7 @@ extension Registration: RegistrationRequestFactory {
 extension Registration {
     struct Register: RequestRouter {
         var baseUrl: URL
-        var method: HTTPMethod = .get
+        var method: HTTPMethod = .post
         var path: String = "register"
         
         let userData: UserData

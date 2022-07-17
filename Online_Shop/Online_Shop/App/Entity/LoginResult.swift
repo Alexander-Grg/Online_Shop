@@ -11,10 +11,11 @@ struct LoginResult: Codable {
     let result: Int
     let user: User
     let userMessage: String
-    
+
     enum CodingKeys: String, CodingKey {
         case result
         case user
         case userMessage = "user_message"
     }
 }
+

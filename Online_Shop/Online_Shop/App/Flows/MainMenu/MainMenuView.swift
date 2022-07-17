@@ -19,7 +19,7 @@ struct MainMenuView: View {
         VStack {
             Text("Online Shop")
                 .font(.largeTitle.bold())
-            Text("Please enter single product ID or category ID for a list")
+            Text("Please enter single product ID, or category ID, to get a product list")
             List(viewModel.productList) { product in
                 HStack {
                     Text(product.productName)

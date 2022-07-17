@@ -28,7 +28,7 @@ class GetCatalogDataTest: XCTestCase {
     }
     
     func testGetCatalogData() {
-        getCatalog.getData(pageNumber: 1,
+        getCatalog.getData(
                            categoryID: 1) { [weak self] response in
             switch response.result {
             case .success(let data):

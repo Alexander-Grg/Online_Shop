@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import Alamofire
 
 final class LoginViewModel: ObservableObject {
     @Published var loginResult = false
@@ -26,7 +25,7 @@ final class LoginViewModel: ObservableObject {
                     self.loginResult = login.result == 1 ? true : false
                 }
             case .failure(let error):
-                print(error.localizedDescription)
+                print(error)
             }
         }
     }

@@ -38,7 +38,7 @@ extension GetCatalogData {
     struct GetCatalog: RequestRouter {
         
         var baseUrl: URL
-        var method: HTTPMethod = .get
+        var method: HTTPMethod = .post
         var path: String = "getProductList"
         
         let categoryID: Int

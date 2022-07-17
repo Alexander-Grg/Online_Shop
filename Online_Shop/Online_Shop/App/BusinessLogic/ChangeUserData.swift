@@ -38,7 +38,7 @@ extension ChangeUserData {
     struct ChangeData: RequestRouter {
         
         var baseUrl: URL
-        var method: HTTPMethod = .get
+        var method: HTTPMethod = .post
         var path: String = "changeUserData"
         
         let userData: UserData
