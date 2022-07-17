@@ -9,8 +9,7 @@ import Foundation
 import Alamofire
 
 protocol GetCatalogDataFactory {
-    func getData(pageNumber: Int,
-                 categoryID: Int,
+    func getData(categoryID: Int,
                  completionHandler:
                  @escaping (AFDataResponse<CatalogData>) -> Void)
 }

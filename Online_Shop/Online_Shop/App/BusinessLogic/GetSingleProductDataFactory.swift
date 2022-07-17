@@ -11,6 +11,6 @@ import Alamofire
 protocol GetSingleProductDataFactory {
     func getData(id: Int,
                 completionHandler:
-                @escaping (AFDataResponse<SingleProductData>)
+                @escaping (AFDataResponse<Product>)
                 -> Void)
 }

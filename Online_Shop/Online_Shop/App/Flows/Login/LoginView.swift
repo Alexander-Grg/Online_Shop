@@ -11,6 +11,8 @@ struct LoginView: View {
    @ObservedObject var viewModel: LoginViewModel
    @State private var login = ""
    @State private var password = ""
+   @State private var alertItem: AlertItem?
+   @State private var isLogin = false
     
     var body: some View {
         NavigationView {
@@ -32,21 +34,41 @@ struct LoginView: View {
                     .textFieldStyle(.roundedBorder)
                 SecureField("Password", text: $password)
                     .textFieldStyle(.roundedBorder)
-                Button("Sing In") {
-                    self.viewModel.getData(login: login, password: password)
+                
+                NavigationLink(isActive: $isLogin) {
+                    MainMenuView(viewModel: MainMenuViewModel())
+                } label: {
+                    Button("Sing In") {
+                        if !login.isEmpty && !password.isEmpty {
+                            self.viewModel.getData(login: login, password: password)
+                        } else {
+                            self.alertItem = AlertItem(title: Text("Error"), message: Text("Please enter login and password"))
+                        }
+                        DispatchQueue.main.asyncAfter(deadline: DispatchTime(uptimeNanoseconds: UInt64(5))) {
+                            if viewModel.loginResult {
+                                self.isLogin = true
+                            }
+                        }
+                    }
+                    .buttonStyle(.borderedProminent)
                 }
-                .buttonStyle(.borderedProminent)
+
+                
+                
+   
+              
+                
                 
                 NavigationLink {
                     SignUpView(viewModel: SingUpViewModel())
                 } label: {
-//                    Button("Sign Up") {
-//                    }
                     Text("Sign Up")
             
                 }
 
             }
+        }.alert(item: $alertItem) { alertItem in
+            Alert(title: alertItem.title, message: alertItem.message, dismissButton: alertItem.dismissButton)
         }
         }
     }

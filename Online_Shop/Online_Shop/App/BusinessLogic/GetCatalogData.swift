@@ -9,7 +9,7 @@ import Foundation
 import Alamofire
 
 class GetCatalogData: AbstractRequestFactory {
-    let baseUrl = URL(string: "https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses/")!
+    let baseUrl = URL(string: "https://gentle-depths-89634.herokuapp.com/")!
     var errorParser: AbstractErrorParser
     var sessionManager: Session
     var queue: DispatchQueue
@@ -24,12 +24,11 @@ class GetCatalogData: AbstractRequestFactory {
 }
 
 extension GetCatalogData: GetCatalogDataFactory {
-    func getData(pageNumber: Int,
-                 categoryID: Int,
+    func getData(categoryID: Int,
                  completionHandler:
                  @escaping (AFDataResponse<CatalogData>)
                  -> Void) {
-        let requestModel = GetCatalog(baseUrl: baseUrl, pageNumber: pageNumber, categoryID: categoryID)
+        let requestModel = GetCatalog(baseUrl: baseUrl, categoryID: categoryID)
         self.request(request: requestModel, completionHandler:
                         completionHandler)
     }
@@ -40,13 +39,11 @@ extension GetCatalogData {
         
         var baseUrl: URL
         var method: HTTPMethod = .get
-        var path: String = "catalogData.json"
+        var path: String = "getProductList"
         
-        let pageNumber: Int
         let categoryID: Int
         var parameters: Parameters? {
             return [
-                "page_number": pageNumber,
                 "id_category": categoryID
             ]
         }

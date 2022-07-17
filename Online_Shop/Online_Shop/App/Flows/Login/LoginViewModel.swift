@@ -9,7 +9,7 @@ import Foundation
 import Alamofire
 
 final class LoginViewModel: ObservableObject {
-    @Published var loginResult = 0
+    @Published var loginResult = false
     let containerBuilder = ContainerBuilder()
 
     func getData(login: String, password: String) {
@@ -23,7 +23,7 @@ final class LoginViewModel: ObservableObject {
             switch result.result {
             case .success(let login):
                 DispatchQueue.main.async {
-                    self.loginResult = login.result
+                    self.loginResult = login.result == 1 ? true : false
                 }
             case .failure(let error):
                 print(error.localizedDescription)

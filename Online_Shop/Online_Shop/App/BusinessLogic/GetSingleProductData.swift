@@ -9,7 +9,7 @@ import Foundation
 import Alamofire
 
 class GetSingleProductData: AbstractRequestFactory {
-    let baseUrl = URL(string: "https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses/")!
+    let baseUrl = URL(string: "https://gentle-depths-89634.herokuapp.com/")!
     var errorParser: AbstractErrorParser
     var sessionManager: Session
     var queue: DispatchQueue
@@ -26,10 +26,11 @@ class GetSingleProductData: AbstractRequestFactory {
 extension GetSingleProductData: GetSingleProductDataFactory {
     func getData(id: Int,
                  completionHandler:
-                 @escaping (AFDataResponse<SingleProductData>)
+                 @escaping (AFDataResponse<Product>)
                  -> Void) {
         let requestModel = GetSingleProduct(baseUrl: baseUrl,
                                             id: id)
+       
         self.request(request: requestModel, completionHandler:
                         completionHandler)
     }
@@ -40,7 +41,7 @@ extension GetSingleProductData {
         
         var baseUrl: URL
         var method: HTTPMethod = .get
-        var path: String = "getGoodById.json"
+        var path: String = "getSingleProduct"
         
         let id: Int
         var parameters: Parameters? {
