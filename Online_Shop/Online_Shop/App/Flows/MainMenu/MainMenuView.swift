@@ -26,7 +26,7 @@ struct MainMenuView: View {
                 
                 List(viewModel.productList.indices, id: \.self) { index in
                     NavigationLink {
-                        ReviewsTab(viewModel: viewModel, index: index)
+                        ReviewsTab(viewModel: viewModel, reviewViewModel: ReviewsViewModel(), searchText: $searchText, index: index)
                     } label: {
                             HStack {
                                 Text(viewModel.productList[index].productName)
@@ -39,8 +39,8 @@ struct MainMenuView: View {
     }
 }
 
-struct MainMenuView_Previews: PreviewProvider {
-    static var previews: some View {
-        MainMenuView(viewModel: MainMenuViewModel())
-    }
-}
+//struct MainMenuView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        MainMenuView(viewModel: MainMenuViewModel())
+//    }
+//}

@@ -15,6 +15,7 @@ struct LoginView: View {
     @State private var isLogin = false
     @State private var isLoading = false
     
+    
     var body: some View {
         NavigationView {
             ZStack {
@@ -35,7 +36,7 @@ struct LoginView: View {
                     SecureField("Password", text: $password)
                         .textFieldStyle(.roundedBorder)
                     if self.isLoading == true {
-                        ProgressView("Logging in...", value: 1.0)
+                        ProgressView("Logging in...", value: 1.2)
                             .foregroundColor(.white)
                     }
                     NavigationLink(isActive: $isLogin) {
@@ -50,7 +51,7 @@ struct LoginView: View {
                                 self.alertItem = AlertItem(title: Text("Error"), message: Text("Please enter login and password"))
                             }
                             
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.9) {
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 1.2) {
                                 if viewModel.loginResult == true {
                                     self.isLogin = true
                                     self.isLoading = false

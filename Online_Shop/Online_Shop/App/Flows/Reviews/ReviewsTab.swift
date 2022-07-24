@@ -9,6 +9,9 @@ import SwiftUI
 
 struct ReviewsTab: View {
     @ObservedObject var viewModel: MainMenuViewModel
+    @ObservedObject var reviewViewModel: ReviewsViewModel
+    @Binding var searchText: String
+    @State private var isReviewAdded = false
     let index: Int
     
     var body: some View {
@@ -20,9 +23,14 @@ struct ReviewsTab: View {
                 Text(reviews.review)
                     .italic()
             }
-        }.toolbar {
+        }.onAppear(perform: {
+            if self.isReviewAdded {
+                viewModel.getProductList(categoryID: searchText)
+            }
+        })
+        .toolbar {
             NavigationLink {
-                WriteAReview(viewModel: ReviewsViewModel(), index: index, id: viewModel.productList[index].id)
+                WriteAReview(viewModel: ReviewsViewModel(), index: index, id:  viewModel.productList[index].id, isReviewAdded: $isReviewAdded)
             } label: {
                 Text("Write a review")
             }
@@ -33,8 +41,9 @@ struct ReviewsTab: View {
 struct WriteAReview: View {
     @ObservedObject var viewModel: ReviewsViewModel
     let index: Int
-    let id: Int
+    let id: String
    
+    @Binding var isReviewAdded: Bool
     @State private var alertItem: AlertItem?
     @State private var text = ""
     @State private var textName = ""
@@ -42,23 +51,26 @@ struct WriteAReview: View {
     var body: some View {
         VStack {
             TextField("Enter your name", text: $textName)
+                .textCase(.lowercase)
             TextField("Enter your review text", text: $text)
+                .textCase(.lowercase)
             HStack {
                 Text("Cancel")
                     .padding(.leading, 5)
                 Spacer()
                 Button("Save") {
-                    if !text.isEmpty {
+                    if !text.isEmpty && !textName.isEmpty {
                         viewModel.addReview(review: text,
                                             nameOfReviewer: textName,
-                                            id: String(id))
+                                            id: id)
                     } else {
-                        self.alertItem = AlertItem(title: Text("Error"), message: Text("Enter your review"))
+                        self.alertItem = AlertItem(title: Text("Error"), message: Text("Enter your name and review"))
                     }
                     
-                    DispatchQueue.main.asyncAfter(deadline: DispatchTime(uptimeNanoseconds: UInt64(5))) {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.2) {
                         if viewModel.isAdded {
                             self.alertItem = AlertItem(title: Text("Success"), message: Text("Your review has been added"))
+                            self.isReviewAdded = true
                         } else {
                             self.alertItem = AlertItem(title: Text("Error"), message: Text("Unknown error, try again later"))
                         }

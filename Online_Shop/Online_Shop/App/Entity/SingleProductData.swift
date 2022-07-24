@@ -10,7 +10,7 @@ import Foundation
 struct Product: Codable, Identifiable {
 //    var id = UUID()
     let result: Int
-    let id: Int
+    let id: String
     let productName: String
     let productPrice: Int
     let categoryID: Int
