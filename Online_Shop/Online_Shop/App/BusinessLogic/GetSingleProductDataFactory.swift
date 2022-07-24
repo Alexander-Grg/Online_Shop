@@ -9,7 +9,7 @@ import Foundation
 import Alamofire
 
 protocol GetSingleProductDataFactory {
-    func getData(id: Int,
+    func getData(id: String,
                 completionHandler:
                 @escaping (AFDataResponse<Product>)
                 -> Void)

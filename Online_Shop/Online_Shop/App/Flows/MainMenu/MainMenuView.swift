@@ -16,11 +16,12 @@ struct MainMenuView: View {
             VStack {
                 Text("Online Shop")
                     .font(.largeTitle.bold())
-                Text("Please enter single product ID, or category ID, to get a product list")
+                Text("Please enter single product ID(Example: m1, d1, etc.), or category ID(d - drink, m - meals), to get a product list")
+                    .padding(.top, 10)
                 TextField("Enter a search request", text: $searchText)
                     .textFieldStyle(.roundedBorder)
                     .onChange(of: searchText) { _ in
-                        viewModel.getProductList(categoryID: Int(searchText) ?? 0)
+                        viewModel.getProductList(categoryID: searchText)
                     }
                 
                 List(viewModel.productList.indices, id: \.self) { index in

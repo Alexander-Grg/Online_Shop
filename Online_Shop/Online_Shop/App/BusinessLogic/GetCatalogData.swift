@@ -24,7 +24,7 @@ class GetCatalogData: AbstractRequestFactory {
 }
 
 extension GetCatalogData: GetCatalogDataFactory {
-    func getData(categoryID: Int,
+    func getData(categoryID: String,
                  completionHandler:
                  @escaping (AFDataResponse<CatalogData>)
                  -> Void) {
@@ -41,7 +41,7 @@ extension GetCatalogData {
         var method: HTTPMethod = .post
         var path: String = "getProductList"
         
-        let categoryID: Int
+        let categoryID: String
         var parameters: Parameters? {
             return [
                 "id_category": categoryID

@@ -24,7 +24,7 @@ class GetSingleProductData: AbstractRequestFactory {
 }
 
 extension GetSingleProductData: GetSingleProductDataFactory {
-    func getData(id: Int,
+    func getData(id: String,
                  completionHandler:
                  @escaping (AFDataResponse<Product>)
                  -> Void) {
@@ -43,7 +43,7 @@ extension GetSingleProductData {
         var method: HTTPMethod = .post
         var path: String = "getSingleProduct"
         
-        let id: Int
+        let id: String
         var parameters: Parameters? {
             return [
                 "id_product" : id
