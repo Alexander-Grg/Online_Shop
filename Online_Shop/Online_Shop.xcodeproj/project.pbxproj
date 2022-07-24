@@ -22,6 +22,7 @@
 		621F7B5628523E5E002AFA74 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 621F7B5528523E5E002AFA74 /* Preview Assets.xcassets */; };
 		621F7B6A28523E5E002AFA74 /* Online_ShopUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621F7B6928523E5E002AFA74 /* Online_ShopUITests.swift */; };
 		621F7B6C28523E5E002AFA74 /* Online_ShopUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621F7B6B28523E5E002AFA74 /* Online_ShopUITestsLaunchTests.swift */; };
+		621FA82728897AF200E7723F /* AddReviewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621FA82628897AF200E7723F /* AddReviewData.swift */; };
 		62391C08286DF1DD00CBBFCA /* SingleProductData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62391C07286DF1DD00CBBFCA /* SingleProductData.swift */; };
 		62391C0A286DF29100CBBFCA /* GetSingleProductData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62391C09286DF29100CBBFCA /* GetSingleProductData.swift */; };
 		62391C0C286DF2A800CBBFCA /* GetSingleProductDataFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62391C0B286DF2A800CBBFCA /* GetSingleProductDataFactory.swift */; };
@@ -50,6 +51,7 @@
 		62E06716285CBF2C00E71923 /* AuthRequestFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E06715285CBF2C00E71923 /* AuthRequestFactory.swift */; };
 		62E06718285CC00400E71923 /* RegistrationRequestFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E06717285CC00400E71923 /* RegistrationRequestFactory.swift */; };
 		62E0671C285CC7E000E71923 /* ChangeUserDataFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E0671B285CC7E000E71923 /* ChangeUserDataFactory.swift */; };
+		62ED506728859ABC000A509D /* ReviewsTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62ED506628859ABC000A509D /* ReviewsTab.swift */; };
 		62F02098287EC829004F22C4 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F02097287EC829004F22C4 /* LoginView.swift */; };
 		62F0209A287ECB1B004F22C4 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F02099287ECB1B004F22C4 /* LoginViewModel.swift */; };
 /* End PBXBuildFile section */
@@ -89,6 +91,7 @@
 		621F7B6528523E5E002AFA74 /* Online_ShopUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Online_ShopUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		621F7B6928523E5E002AFA74 /* Online_ShopUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Online_ShopUITests.swift; sourceTree = "<group>"; };
 		621F7B6B28523E5E002AFA74 /* Online_ShopUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Online_ShopUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		621FA82628897AF200E7723F /* AddReviewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReviewData.swift; sourceTree = "<group>"; };
 		62391C07286DF1DD00CBBFCA /* SingleProductData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleProductData.swift; sourceTree = "<group>"; };
 		62391C09286DF29100CBBFCA /* GetSingleProductData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetSingleProductData.swift; sourceTree = "<group>"; };
 		62391C0B286DF2A800CBBFCA /* GetSingleProductDataFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetSingleProductDataFactory.swift; sourceTree = "<group>"; };
@@ -116,6 +119,7 @@
 		62E06717285CC00400E71923 /* RegistrationRequestFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationRequestFactory.swift; sourceTree = "<group>"; };
 		62E06719285CC6F600E71923 /* ChangeUserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeUserData.swift; sourceTree = "<group>"; };
 		62E0671B285CC7E000E71923 /* ChangeUserDataFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeUserDataFactory.swift; sourceTree = "<group>"; };
+		62ED506628859ABC000A509D /* ReviewsTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsTab.swift; sourceTree = "<group>"; };
 		62F02097287EC829004F22C4 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		62F02099287ECB1B004F22C4 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -250,6 +254,7 @@
 				6280E70C286D9BB70065A04C /* CatalogData.swift */,
 				62391C07286DF1DD00CBBFCA /* SingleProductData.swift */,
 				62436F9C288153EE00EDD9B1 /* AlertItem.swift */,
+				621FA82628897AF200E7723F /* AddReviewData.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -308,9 +313,18 @@
 			path = SignUpMenu;
 			sourceTree = "<group>";
 		};
+		62ED506528859880000A509D /* Reviews */ = {
+			isa = PBXGroup;
+			children = (
+				62ED506628859ABC000A509D /* ReviewsTab.swift */,
+			);
+			path = Reviews;
+			sourceTree = "<group>";
+		};
 		62F02095287EC7CA004F22C4 /* Flows */ = {
 			isa = PBXGroup;
 			children = (
+				62ED506528859880000A509D /* Reviews */,
 				628208AB288007ED00F9C682 /* SignUpMenu */,
 				628208A82880073200F9C682 /* MainMenu */,
 				62F02096287EC7DA004F22C4 /* Login */,
@@ -468,6 +482,7 @@
 				627B2BE0286B44C100256E42 /* ChangeUserData.swift in Sources */,
 				6280E709286D9AF80065A04C /* GetCatalogData.swift in Sources */,
 				627B2BDF286B44BC00256E42 /* ChangeUserDataResult.swift in Sources */,
+				62ED506728859ABC000A509D /* ReviewsTab.swift in Sources */,
 				620EBB86285A254900737F76 /* RequestFactory.swift in Sources */,
 				62E06709285C705D00E71923 /* RegisterUser.swift in Sources */,
 				620EBB75285A12F100737F76 /* ErrorParser.swift in Sources */,
@@ -490,6 +505,7 @@
 				628208AF28800D9C00F9C682 /* SingUpViewModel.swift in Sources */,
 				6280E70B286D9B100065A04C /* GetCatalogDataFactory.swift in Sources */,
 				620EBB7F285A223300737F76 /* User.swift in Sources */,
+				621FA82728897AF200E7723F /* AddReviewData.swift in Sources */,
 				62F0209A287ECB1B004F22C4 /* LoginViewModel.swift in Sources */,
 				6280E70D286D9BB70065A04C /* CatalogData.swift in Sources */,
 				62F02098287EC829004F22C4 /* LoginView.swift in Sources */,

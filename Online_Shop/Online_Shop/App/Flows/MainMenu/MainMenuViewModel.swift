@@ -11,8 +11,7 @@ final class MainMenuViewModel: ObservableObject {
     @Published var productList: [Product] = []
     let containerBuilder = ContainerBuilder()
     
-    
-    func getProductList(categoryID: Int) {
+    func getProductList(categoryID: String) {
         let container = containerBuilder.makeContainer()
         let factory = RequestFactory(container: container)
         let productList = factory.makeCatalogDataRequestFactory()
@@ -21,9 +20,11 @@ final class MainMenuViewModel: ObservableObject {
             guard let self = self else { return }
             switch response.result {
             case .success(let data):
-                self.productList = data.products
+                DispatchQueue.main.async {
+                    self.productList = data.products
+                }
             case .failure(let error):
-                print(error.localizedDescription)
+                print(error)
             }
         }
     }
