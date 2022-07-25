@@ -7,8 +7,12 @@
 
 import Foundation
 
-struct Product: Codable, Identifiable {
-//    var id = UUID()
+struct Product: Codable, Identifiable, Equatable, Hashable {
+    
+    static func == (lhs: Product, rhs: Product) -> Bool {
+        lhs.productName == rhs.productName
+    }
+   
     let result: Int
     let id: String
     let productName: String
@@ -16,6 +20,10 @@ struct Product: Codable, Identifiable {
     let categoryID: Int
     let productReviews: [ProductReviews]?
     
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
+
     enum CodingKeys: String, CodingKey {
         case result
         case id = "id_product"
@@ -26,7 +34,7 @@ struct Product: Codable, Identifiable {
     }
 }
 
-struct ProductReviews: Codable, Identifiable {
+struct ProductReviews: Codable, Identifiable, Hashable {
     var id = UUID()
     let review: String
     let nameOfReviewer: String

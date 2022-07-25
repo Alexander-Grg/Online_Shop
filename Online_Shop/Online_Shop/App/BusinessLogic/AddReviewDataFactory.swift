@@ -14,4 +14,8 @@ protocol AddReviewDataFactory {
                    id: String,
                    completionHandler: @escaping (AFDataResponse<AddReview>)
                    -> Void)
+    
+    func deleteReview(id: String,
+                      completionHandler: @escaping (AFDataResponse<AddReview>)
+                      -> Void)
 }

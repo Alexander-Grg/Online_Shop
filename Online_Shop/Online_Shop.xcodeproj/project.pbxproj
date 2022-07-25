@@ -46,6 +46,7 @@
 		62954636288D6F0800933106 /* AddReviewDataFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62954635288D6F0800933106 /* AddReviewDataFactory.swift */; };
 		6299B00E286C480800873DBE /* RegistrationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6299B00D286C480800873DBE /* RegistrationTest.swift */; };
 		6299B010286C949D00873DBE /* ContainerBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6299B00F286C949D00873DBE /* ContainerBuilder.swift */; };
+		62CA2B2B288EA6E000404764 /* ReviewsField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62CA2B2A288EA6E000404764 /* ReviewsField.swift */; };
 		62E06709285C705D00E71923 /* RegisterUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E06708285C705D00E71923 /* RegisterUser.swift */; };
 		62E0670B285C713600E71923 /* Logout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E0670A285C713600E71923 /* Logout.swift */; };
 		62E06710285C79A500E71923 /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = 62E0670F285C79A500E71923 /* Swinject */; };
@@ -116,6 +117,7 @@
 		62954635288D6F0800933106 /* AddReviewDataFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReviewDataFactory.swift; sourceTree = "<group>"; };
 		6299B00D286C480800873DBE /* RegistrationTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationTest.swift; sourceTree = "<group>"; };
 		6299B00F286C949D00873DBE /* ContainerBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerBuilder.swift; sourceTree = "<group>"; };
+		62CA2B2A288EA6E000404764 /* ReviewsField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsField.swift; sourceTree = "<group>"; };
 		62E06708285C705D00E71923 /* RegisterUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterUser.swift; sourceTree = "<group>"; };
 		62E0670A285C713600E71923 /* Logout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logout.swift; sourceTree = "<group>"; };
 		62E0670C285C718100E71923 /* ChangeUserDataResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeUserDataResult.swift; sourceTree = "<group>"; };
@@ -325,6 +327,7 @@
 			isa = PBXGroup;
 			children = (
 				62ED506628859ABC000A509D /* ReviewsTab.swift */,
+				62CA2B2A288EA6E000404764 /* ReviewsField.swift */,
 				62954631288D6DED00933106 /* ReviewsViewModel.swift */,
 			);
 			path = Reviews;
@@ -499,6 +502,7 @@
 				62E06718285CC00400E71923 /* RegistrationRequestFactory.swift in Sources */,
 				62436F9F2881607300EDD9B1 /* MainMenuViewModel.swift in Sources */,
 				62E06714285CBD4700E71923 /* UserData.swift in Sources */,
+				62CA2B2B288EA6E000404764 /* ReviewsField.swift in Sources */,
 				6299B010286C949D00873DBE /* ContainerBuilder.swift in Sources */,
 				620EBB7B285A1DEE00737F76 /* RequestRouter.swift in Sources */,
 				62E06716285CBF2C00E71923 /* AuthRequestFactory.swift in Sources */,

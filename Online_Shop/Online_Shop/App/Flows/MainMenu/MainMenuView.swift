@@ -8,39 +8,37 @@
 import SwiftUI
 
 struct MainMenuView: View {
-    @ObservedObject var viewModel: MainMenuViewModel
+    @StateObject var viewModel: MainMenuViewModel = MainMenuViewModel()
+    @StateObject var reviewsViewModel: ReviewsViewModel = ReviewsViewModel()
     @State private var searchText = ""
     
     var body: some View {
-
-            VStack {
-                Text("Online Shop")
-                    .font(.largeTitle.bold())
-                Text("Please enter single product ID(Example: m1, d1, etc.), or category ID(d - drink, m - meals), to get a product list")
-                    .padding(.top, 10)
-                TextField("Enter a search request", text: $searchText)
-                    .textFieldStyle(.roundedBorder)
-                    .onChange(of: searchText) { _ in
-                        viewModel.getProductList(categoryID: searchText)
-                    }
-                
-                List(viewModel.productList.indices, id: \.self) { index in
-                    NavigationLink {
-                        ReviewsTab(viewModel: viewModel, reviewViewModel: ReviewsViewModel(), searchText: $searchText, index: index)
-                    } label: {
-                            HStack {
-                                Text(viewModel.productList[index].productName)
-                                Text("\(viewModel.productList[index].productPrice) $")
-                        }
+        VStack {
+            Text("Online Shop")
+                .font(.largeTitle.bold())
+            Text("Please enter single product ID(Example: m1, d1, etc.), or category ID(d - drink, m - meals), to get a product list")
+                .padding(.top, 10)
+            TextField("Enter a search request", text: $searchText)
+                .textFieldStyle(.roundedBorder)
+                .textInputAutocapitalization(.never)
+                .textCase(.lowercase)
+                .onChange(of: searchText) { _ in
+                    viewModel.getProductList(categoryID: searchText)
+                }
+            
+            List(viewModel.productList, id: \.self) { product in
+                NavigationLink {
+                    ReviewsTab(viewModel: viewModel, reviewViewModel: reviewsViewModel, review: product.productReviews ?? [], searchText: $searchText, id: product.id)
+                } label: {
+                    HStack {
+                        Text(product.productName)
+                        Text("\(product.productPrice) $")
                     }
                 }
             }
-        
+        }.onAppear {
+            viewModel.getProductList(categoryID: searchText)
+        }
     }
 }
 
-//struct MainMenuView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        MainMenuView(viewModel: MainMenuViewModel())
-//    }
-//}

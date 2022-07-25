@@ -8,79 +8,45 @@
 import SwiftUI
 
 struct ReviewsTab: View {
-    @ObservedObject var viewModel: MainMenuViewModel
-    @ObservedObject var reviewViewModel: ReviewsViewModel
+    @StateObject var viewModel: MainMenuViewModel
+    @StateObject var reviewViewModel: ReviewsViewModel
+    var review: [ProductReviews]
     @Binding var searchText: String
     @State private var isReviewAdded = false
-    let index: Int
+    @State private var alertItem: AlertItem?
+    let id: String
     
     var body: some View {
         VStack {
-            Text("Product id: \(viewModel.productList[index].id)")
-            List(viewModel.productList[index].productReviews ?? []) { reviews in
+            List(review, id: \.self) { reviews in
                 Text(reviews.nameOfReviewer)
                     .bold()
                 Text(reviews.review)
                     .italic()
             }
-        }.onAppear(perform: {
+            Button("Delete review") {
+                reviewViewModel.deleteReview(id: id)
+                self.alertItem = AlertItem(title: Text("Successful"), message: Text("The latest review has been deleted"))
+                
+                viewModel.getProductList(categoryID: searchText)
+            }
+        }
+        .onAppear(perform: {
             if self.isReviewAdded {
                 viewModel.getProductList(categoryID: searchText)
             }
         })
         .toolbar {
             NavigationLink {
-                WriteAReview(viewModel: ReviewsViewModel(), index: index, id:  viewModel.productList[index].id, isReviewAdded: $isReviewAdded)
+                WriteAReview(viewModel: reviewViewModel, id: id, isReviewAdded: $isReviewAdded)
             } label: {
                 Text("Write a review")
             }
         }
-    }
-}
-
-struct WriteAReview: View {
-    @ObservedObject var viewModel: ReviewsViewModel
-    let index: Int
-    let id: String
-   
-    @Binding var isReviewAdded: Bool
-    @State private var alertItem: AlertItem?
-    @State private var text = ""
-    @State private var textName = ""
-    
-    var body: some View {
-        VStack {
-            TextField("Enter your name", text: $textName)
-                .textCase(.lowercase)
-            TextField("Enter your review text", text: $text)
-                .textCase(.lowercase)
-            HStack {
-                Text("Cancel")
-                    .padding(.leading, 5)
-                Spacer()
-                Button("Save") {
-                    if !text.isEmpty && !textName.isEmpty {
-                        viewModel.addReview(review: text,
-                                            nameOfReviewer: textName,
-                                            id: id)
-                    } else {
-                        self.alertItem = AlertItem(title: Text("Error"), message: Text("Enter your name and review"))
-                    }
-                    
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.2) {
-                        if viewModel.isAdded {
-                            self.alertItem = AlertItem(title: Text("Success"), message: Text("Your review has been added"))
-                            self.isReviewAdded = true
-                        } else {
-                            self.alertItem = AlertItem(title: Text("Error"), message: Text("Unknown error, try again later"))
-                        }
-                    }
-                }.padding(.trailing, 5.0)
-                .foregroundColor(.blue)
-                Spacer()
-            }
-        }.alert(item: $alertItem) { alertItem in
+        .alert(item: $alertItem) { alertItem in
             Alert(title: alertItem.title, message: alertItem.message, dismissButton: alertItem.dismissButton)
         }
     }
 }
+
+

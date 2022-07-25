@@ -29,12 +29,20 @@ extension AddReviewData: AddReviewDataFactory {
         nameOfReviewer: String,
         id: String,
         completionHandler: @escaping (AFDataResponse<AddReview>)
-        -> Void)
-    {
+        -> Void){
         let requestModel = AddReviewNetwork(baseUrl: baseUrl,
                                             review: review,
                                             nameOfReviewer: nameOfReviewer,
                                             id: id)
+        self.request(request: requestModel,
+                     completionHandler: completionHandler)
+    }
+    
+    func deleteReview(id: String,
+                      completionHandler: @escaping (AFDataResponse<AddReview>)
+                      -> Void){
+        let requestModel = DeleteReviewNetwork(baseUrl: baseUrl,
+                                               id: id)
         self.request(request: requestModel,
                      completionHandler: completionHandler)
     }
@@ -54,6 +62,19 @@ extension AddReviewData {
             return [
                 "review" : review,
                 "nameOfReviewer" : nameOfReviewer,
+                "id" : id
+            ]
+        }
+    }
+    
+    struct DeleteReviewNetwork: RequestRouter {
+        var baseUrl: URL
+        var method: HTTPMethod = .put
+        var path: String = "deleteReview"
+        
+        let id: String
+        var parameters: Parameters? {
+            return [
                 "id" : id
             ]
         }

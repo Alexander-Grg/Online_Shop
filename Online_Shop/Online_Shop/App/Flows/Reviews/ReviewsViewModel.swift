@@ -10,6 +10,7 @@ import Foundation
 final class ReviewsViewModel: ObservableObject {
     let containerBuilder = ContainerBuilder()
     var isAdded = false
+    var isDeleted = false
     func addReview(review: String,
                    nameOfReviewer: String,
                    id: String) {
@@ -30,5 +31,27 @@ final class ReviewsViewModel: ObservableObject {
                 print(error)
             }
         }
+    }
+    
+    func deleteReview(id: String) {
+        let container = containerBuilder.makeContainer()
+        let factory = RequestFactory(container: container)
+        let review = factory.makeAddReviewDataFactory()
+        
+        review.deleteReview(id: id) { [weak self] data in
+            guard let self = self else { return }
+            switch data.result {
+            case .success(let data):
+                DispatchQueue.main.async {
+                    self.isDeleted = data.result == 1 ? true : false
+                }
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
+    public func reloadView() {
+        objectWillChange.send()
     }
 }

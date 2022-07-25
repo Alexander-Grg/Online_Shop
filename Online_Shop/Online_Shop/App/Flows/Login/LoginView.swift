@@ -8,13 +8,12 @@
 import SwiftUI
 
 struct LoginView: View {
-    @ObservedObject var viewModel: LoginViewModel
+    @ObservedObject var viewModel: LoginViewModel = LoginViewModel()
     @State private var login = ""
     @State private var password = ""
     @State private var alertItem: AlertItem?
     @State private var isLogin = false
     @State private var isLoading = false
-    
     
     var body: some View {
         NavigationView {
@@ -35,12 +34,8 @@ struct LoginView: View {
                         .textFieldStyle(.roundedBorder)
                     SecureField("Password", text: $password)
                         .textFieldStyle(.roundedBorder)
-                    if self.isLoading == true {
-                        ProgressView("Logging in...", value: 1.2)
-                            .foregroundColor(.white)
-                    }
                     NavigationLink(isActive: $isLogin) {
-                        MainMenuView(viewModel: MainMenuViewModel())
+                        MainMenuView()
                     } label: {
                         Button("Sing In") {
                             
@@ -61,11 +56,16 @@ struct LoginView: View {
                         .buttonStyle(.borderedProminent)
                     }
                     NavigationLink {
-                        SignUpView(viewModel: SingUpViewModel())
+                        SignUpView()
                     } label: {
                         Text("Sign Up")
                         
                     }
+                    if self.isLoading == true {
+                        ProgressView("Logging in...")
+                            .foregroundColor(.white)
+                    }
+                    Spacer()
                     
                 }
             }.alert(item: $alertItem) { alertItem in
