@@ -28,27 +28,27 @@ struct SignUpView: View {
             Text("Fill in your data for the registration, or update your current information")
                 .multilineTextAlignment(.leading)
                 .padding(.top, 5.0)
-        Form {
-            Group {
-                TextField("User ID (Your unique number)", text: $id)
-                    .keyboardType(.numberPad)
-                TextField("Name", text: $username)
-                TextField("Password", text: $password)
-                TextField("Email", text: $email)
-                TextField("Credit Card", text: $creditCard)
-                TextField("Bio", text: $bio)
-            }
-            .textFieldStyle(.automatic)
-            .padding(.leading, 10.0)
-            
-            HStack {
-                Picker(selection: $gender, label: Text("Select Gender")) {
-                    Text("Choose...").tag(Gender.choose)
-                    Text("Male").tag(Gender.male)
-                    Text("Female").tag(Gender.female)
+            Form {
+                Group {
+                    TextField("User ID (Your unique number)", text: $id)
+                        .keyboardType(.numberPad)
+                    TextField("Name", text: $username)
+                    TextField("Password", text: $password)
+                    TextField("Email", text: $email)
+                    TextField("Credit Card", text: $creditCard)
+                    TextField("Bio", text: $bio)
+                }
+                .textFieldStyle(.automatic)
+                .padding(.leading, 10.0)
+                
+                HStack {
+                    Picker(selection: $gender, label: Text("Select Gender")) {
+                        Text("Choose...").tag(Gender.choose)
+                        Text("Male").tag(Gender.male)
+                        Text("Female").tag(Gender.female)
+                    }
                 }
             }
-        }
             Group {
                 HStack {
                     Button("Register") {
@@ -70,9 +70,7 @@ struct SignUpView: View {
                         }
                     }
                     Button("Update") {
-                        
-                        let newData = viewModel.createUser(id: id, username: username, password: password, email: email, gender: Gender(rawValue: gender.rawValue) ?? Gender.choose, creditCard: creditCard, bio: bio)
-                        
+                        let newData = viewModel.createUser(id: id, username: username, password: password, email: email, gender: gender, creditCard: (Gender(rawValue: gender.rawValue) ?? Gender.choose).rawValue, bio: bio)
                         viewModel.changeData(userData: newData)
                         
                         if viewModel.isDataChanged {
@@ -83,7 +81,7 @@ struct SignUpView: View {
                     }
                 }
             }   .buttonStyle(.bordered)
-
+            
         }
         .alert(item: $alertItem) { alertItem in
             Alert(title: alertItem.title, message: alertItem.message, dismissButton: alertItem.dismissButton)

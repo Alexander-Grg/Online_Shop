@@ -10,7 +10,6 @@ import SwiftUI
 struct WriteAReview: View {
     @StateObject var viewModel: ReviewsViewModel
     let id: String
-    
     @Binding var isReviewAdded: Bool
     @State private var alertItem: AlertItem?
     @State private var text = ""

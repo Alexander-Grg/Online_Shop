@@ -13,7 +13,6 @@ struct MainMenuView: View {
     @StateObject var basket: FakeBasket = FakeBasket()
     @State private var searchText = ""
     var filteredProducts: [Product] = []
-
     
     var body: some View {
         VStack {
@@ -31,13 +30,13 @@ struct MainMenuView: View {
             
             List() {
                 ForEach(viewModel.productList, id: \.self) { product in
-                NavigationLink {
-                    ReviewsTab(viewModel: viewModel, reviewViewModel: reviewsViewModel, searchText: $searchText, id: product.id, review: product.productReviews ?? [])
-                } label: {
-                    ProductCell(product: product, basket: basket)
+                    NavigationLink {
+                        ReviewsTab(viewModel: viewModel, reviewViewModel: reviewsViewModel, searchText: $searchText, id: product.id, review: product.productReviews ?? [])
+                    } label: {
+                        ProductCell(product: product, basket: basket)
+                    }
+                }
             }
-            }
-        }
         }.onAppear {
             viewModel.getProductList(categoryID: searchText)
         }
@@ -51,10 +50,9 @@ struct MainMenuView: View {
     }
 }
 
-
 struct MainMenuView_Previews: PreviewProvider {
     static var previews: some View {
-
+        
         MainMenuView(viewModel: MainMenuViewModel(), reviewsViewModel: ReviewsViewModel())
     }
 }

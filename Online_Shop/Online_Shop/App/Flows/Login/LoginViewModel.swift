@@ -10,7 +10,7 @@ import Foundation
 final class LoginViewModel: ObservableObject {
     @Published var loginResult = false
     let containerBuilder = ContainerBuilder()
-
+    
     func getData(login: String, password: String) {
         let container = containerBuilder.makeContainer()
         let factory = RequestFactory(container: container)
@@ -18,7 +18,7 @@ final class LoginViewModel: ObservableObject {
         
         auth.login(userName: login, password: password) { [weak self] result in
             guard let self = self else { return }
-
+            
             switch result.result {
             case .success(let login):
                 DispatchQueue.main.async {

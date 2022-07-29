@@ -25,7 +25,7 @@ final class SingUpViewModel: ObservableObject {
                 DispatchQueue.main.async {
                     self.isRegistered = data.result == 1 ? true : false
                 }
-
+                
             case .failure(let error):
                 print(error)
             }
@@ -44,9 +44,9 @@ final class SingUpViewModel: ObservableObject {
                 DispatchQueue.main.async {
                     self.isDataChanged = data.result == 1 ? true : false
                 }
-
+                
             case .failure(let error):
-                print(error.localizedDescription)
+                print(error)
             }
         }
     }

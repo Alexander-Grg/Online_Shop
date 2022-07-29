@@ -21,7 +21,6 @@ final class FakeBasket: ObservableObject {
         }
     }
     
-    
     func countProducts(product: Product) -> Int {
         var totalcount = 0
         if dictOfProducts.keys.contains(product.productName) {

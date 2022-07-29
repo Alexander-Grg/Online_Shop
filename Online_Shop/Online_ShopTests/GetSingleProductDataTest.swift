@@ -27,7 +27,7 @@ class GetSingleProductDataTest: XCTestCase {
     }
     
     func testGetSingleData() {
-        getSingleProduct.getData(id: 1) { [weak self] response in
+        getSingleProduct.getData(id: "m1") { [weak self] response in
             switch response.result {
             case .success(let data):
                 self?.isDataReceived = data.result == 1 ? true : false

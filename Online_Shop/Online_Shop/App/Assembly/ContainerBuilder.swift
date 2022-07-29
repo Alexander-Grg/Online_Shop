@@ -15,7 +15,6 @@ class ContainerBuilder: AbstractRequestFactory {
     let errorParser: AbstractErrorParser = ErrorParser()
     let queue = DispatchQueue.global(qos: .utility)
     
-    
     func makeContainer() -> Container {
         let container = Container()
         container.register(AbstractErrorParser.self) { _ in ErrorParser()}
