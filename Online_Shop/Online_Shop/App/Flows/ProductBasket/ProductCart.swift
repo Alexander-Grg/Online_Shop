@@ -10,6 +10,7 @@ import SwiftUI
 struct ProductCart: View {
     
     @StateObject var basket: FakeBasket
+    @State private var alertItem: AlertItem?
     
     var body: some View {
         VStack {
@@ -30,12 +31,32 @@ struct ProductCart: View {
                     }
                 }
             }
+            Spacer()
             Text("Total price is: \(basket.totalPrice)")
+                .padding(.bottom, 10)
+            Button("Pay") {
+                basket.pay(totalPrice: basket.totalPrice)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                if basket.isPaid {
+                    self.alertItem = AlertItem(title: Text("Success"), message: Text("\(basket.userMessage)"))
+                    basket.dictOfProducts.removeAll()
+                    basket.totalPrice = 0
+                } else {
+                    self.alertItem = AlertItem(title:Text("Error"), message: Text("The payment is unsuccessful, please, try again"))
+                }
+                }
+            }
+            .foregroundColor(.green)
+            .padding(.bottom, 10)
+            
             Button("Delete all products") {
                 basket.dictOfProducts.removeAll()
                 basket.totalPrice = 0
             }
             .foregroundColor(.red)
+            .padding(.bottom, 10)
+        }  .alert(item: $alertItem) { alertItem in
+            Alert(title: alertItem.title, message: alertItem.message, dismissButton: alertItem.dismissButton)
         }
     }
 }

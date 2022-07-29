@@ -56,6 +56,13 @@ class ContainerBuilder: AbstractRequestFactory {
                                  sessionManager: resolver.resolve(Session.self)!,
                                  queue: self.queue)
         }
+    
+        container.register(PayForProductsDataFactory.self) { resolver in
+            return PayForProducts(errorParser: resolver.resolve(AbstractErrorParser.self)!,
+                                  sessionManager: resolver.resolve(Session.self)!,
+                                  queue: self.queue)
+        }
+        
         return container
     }
 }
