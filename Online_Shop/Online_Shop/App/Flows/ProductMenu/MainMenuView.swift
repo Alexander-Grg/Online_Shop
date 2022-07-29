@@ -31,7 +31,7 @@ struct MainMenuView: View {
             List() {
                 ForEach(viewModel.productList, id: \.self) { product in
                     NavigationLink {
-                        ReviewsTab(viewModel: viewModel, reviewViewModel: reviewsViewModel, searchText: $searchText, id: product.id, review: product.productReviews ?? [])
+                        ReviewsTab(product: product, viewModel: viewModel, reviewViewModel: reviewsViewModel, searchText: $searchText)
                     } label: {
                         ProductCell(product: product, basket: basket)
                     }

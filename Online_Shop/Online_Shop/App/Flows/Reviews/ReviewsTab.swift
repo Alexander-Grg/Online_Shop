@@ -8,29 +8,29 @@
 import SwiftUI
 
 struct ReviewsTab: View {
+    let product: Product
     @StateObject var viewModel: MainMenuViewModel
     @StateObject var reviewViewModel: ReviewsViewModel
     @Binding var searchText: String
     @State private var isReviewAdded = false
     @State private var alertItem: AlertItem?
-    let id: String
-    var review: [ProductReviews]
-    
+
     var body: some View {
         VStack {
             Text("Reviews")
                 .font(.system(size: 30.0))
                 .bold()
-            List(review, id: \.self) { reviews in
-                Text(reviews.nameOfReviewer)
-                    .bold()
-                Text(reviews.review)
-                    .italic()
+            List (){
+                ForEach(product.productReviews ?? []) { review in
+                    Text(review.nameOfReviewer)
+                        .bold()
+                    Text(review.review)
+                        .italic()
+                }
             }
             Button("Delete review") {
-                reviewViewModel.deleteReview(id: id)
+                reviewViewModel.deleteReview(id: product.id)
                 self.alertItem = AlertItem(title: Text("Successful"), message: Text("The latest review has been deleted"))
-                
                 viewModel.getProductList(categoryID: searchText)
             }
         }
@@ -41,7 +41,7 @@ struct ReviewsTab: View {
         })
         .toolbar {
             NavigationLink {
-                WriteAReview(viewModel: reviewViewModel, id: id, isReviewAdded: $isReviewAdded)
+                WriteAReview(viewModel: reviewViewModel, id: product.id, isReviewAdded: $isReviewAdded)
             } label: {
                 Text("Write a review")
             }
