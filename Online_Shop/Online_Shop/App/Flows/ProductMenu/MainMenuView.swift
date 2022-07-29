@@ -10,7 +10,10 @@ import SwiftUI
 struct MainMenuView: View {
     @StateObject var viewModel: MainMenuViewModel = MainMenuViewModel()
     @StateObject var reviewsViewModel: ReviewsViewModel = ReviewsViewModel()
+    @StateObject var basket: FakeBasket = FakeBasket()
     @State private var searchText = ""
+    var filteredProducts: [Product] = []
+
     
     var body: some View {
         VStack {
@@ -26,19 +29,33 @@ struct MainMenuView: View {
                     viewModel.getProductList(categoryID: searchText)
                 }
             
-            List(viewModel.productList, id: \.self) { product in
+            List() {
+                ForEach(viewModel.productList, id: \.self) { product in
                 NavigationLink {
-                    ReviewsTab(viewModel: viewModel, reviewViewModel: reviewsViewModel, review: product.productReviews ?? [], searchText: $searchText, id: product.id)
+                    ReviewsTab(viewModel: viewModel, reviewViewModel: reviewsViewModel, searchText: $searchText, id: product.id, review: product.productReviews ?? [])
                 } label: {
-                    HStack {
-                        Text(product.productName)
-                        Text("\(product.productPrice) $")
-                    }
-                }
+                    ProductCell(product: product, basket: basket)
             }
+            }
+        }
         }.onAppear {
             viewModel.getProductList(categoryID: searchText)
         }
+        .toolbar {
+            NavigationLink {
+                ProductCart(basket: basket)
+            } label: {
+                Image(systemName: "cart.circle")
+            }
+        }
+    }
+}
+
+
+struct MainMenuView_Previews: PreviewProvider {
+    static var previews: some View {
+
+        MainMenuView(viewModel: MainMenuViewModel(), reviewsViewModel: ReviewsViewModel())
     }
 }
 

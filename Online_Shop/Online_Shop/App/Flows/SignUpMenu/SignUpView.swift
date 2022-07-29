@@ -29,8 +29,6 @@ struct SignUpView: View {
                 .multilineTextAlignment(.leading)
                 .padding(.top, 5.0)
         Form {
-
-          
             Group {
                 TextField("User ID (Your unique number)", text: $id)
                     .keyboardType(.numberPad)
@@ -54,20 +52,19 @@ struct SignUpView: View {
             Group {
                 HStack {
                     Button("Register") {
+                        
                         let data = viewModel.createUser(id: id, username: username, password: password, email: email, gender: Gender(rawValue: gender.rawValue) ?? Gender.choose, creditCard: creditCard, bio: bio)
                         
                         if !id.isEmpty && !username.isEmpty && !password.isEmpty && !email.isEmpty && !creditCard.isEmpty && !bio.isEmpty && data.gender != .choose  {
                             viewModel.register(userData: data)
                             
-                            DispatchQueue.main.asyncAfter(deadline: DispatchTime(uptimeNanoseconds: UInt64(5))) {
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
                                 if viewModel.isRegistered {
                                     self.alertItem = AlertItem(title: Text("Success"), message: Text("You've been registered"))
                                 } else {
                                     self.alertItem = AlertItem(title: Text("Error"), message: Text("Registration failed, check out your data, ID can contain only numbers"))
                                 }
                             }
-                        } else if !id.isEmpty && !username.isEmpty && !password.isEmpty && !email.isEmpty && !creditCard.isEmpty && !bio.isEmpty && data.gender == .choose {
-                            self.alertItem = AlertItem(title: Text("Error"), message: Text("You need to choose a gender"))
                         } else {
                             self.alertItem = AlertItem(title: Text("Error"), message: Text("Each field needs to be filled"))
                         }

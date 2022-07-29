@@ -10,14 +10,17 @@ import SwiftUI
 struct ReviewsTab: View {
     @StateObject var viewModel: MainMenuViewModel
     @StateObject var reviewViewModel: ReviewsViewModel
-    var review: [ProductReviews]
     @Binding var searchText: String
     @State private var isReviewAdded = false
     @State private var alertItem: AlertItem?
     let id: String
+    var review: [ProductReviews]
     
     var body: some View {
         VStack {
+            Text("Reviews")
+                .font(.system(size: 30.0))
+                .bold()
             List(review, id: \.self) { reviews in
                 Text(reviews.nameOfReviewer)
                     .bold()
@@ -48,5 +51,3 @@ struct ReviewsTab: View {
         }
     }
 }
-
-

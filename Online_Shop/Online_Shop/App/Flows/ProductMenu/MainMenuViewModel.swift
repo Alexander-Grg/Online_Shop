@@ -9,8 +9,10 @@ import Foundation
 
 final class MainMenuViewModel: ObservableObject {
     @Published var productList: [Product] = []
-    @Published var reviews: [ProductReviews] = []
     let containerBuilder = ContainerBuilder()
+    var productIndex: Int {
+        productList.firstIndex(where: {$0.id == $0.id})!
+    }
     
     func getProductList(categoryID: String) {
         let container = containerBuilder.makeContainer()
@@ -23,10 +25,6 @@ final class MainMenuViewModel: ObservableObject {
             case .success(let data):
                 DispatchQueue.main.async {
                     self.productList = data.products
-                    self.reviews = data.products.flatMap({ product in
-                        product.productReviews ?? []
-                    })
-                    
                 }
             case .failure(let error):
                 print(error)

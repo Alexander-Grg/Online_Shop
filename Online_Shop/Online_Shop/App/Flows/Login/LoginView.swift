@@ -38,7 +38,6 @@ struct LoginView: View {
                         MainMenuView()
                     } label: {
                         Button("Sing In") {
-                            
                             if !login.isEmpty && !password.isEmpty {
                                 self.viewModel.getData(login: login, password: password)
                                 self.isLoading = true
@@ -46,8 +45,8 @@ struct LoginView: View {
                                 self.alertItem = AlertItem(title: Text("Error"), message: Text("Please enter login and password"))
                             }
                             
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 1.2) {
-                                if viewModel.loginResult == true {
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                                if viewModel.loginResult {
                                     self.isLogin = true
                                     self.isLoading = false
                                 }
