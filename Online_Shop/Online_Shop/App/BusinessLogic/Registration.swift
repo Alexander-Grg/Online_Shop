@@ -29,7 +29,7 @@ extension Registration: RegistrationRequestFactory {
     func register(
         userData: UserData,
         completionHandler: @escaping
-        (AFDataResponse<LoginResult>) -> Void) {
+        (AFDataResponse<RegisterUser>) -> Void) {
             let requestModel = Register(baseUrl: baseUrl, userData: userData)
             self.request(request: requestModel, completionHandler:
                             completionHandler)
@@ -47,6 +47,7 @@ extension Registration {
             return [
                 "id_user" : userData.id,
                 "username" : userData.username,
+                "password" : userData.password,
                 "email": userData.email,
                 "gender": userData.gender.rawValue,
                 "credit_card": userData.creditCard,
