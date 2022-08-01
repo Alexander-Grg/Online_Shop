@@ -6,11 +6,18 @@
 //
 
 import Foundation
+import SwiftUI
 
-final class ReviewsViewModel: ObservableObject {
+@MainActor final class ReviewsViewModel: ObservableObject {
+    
+    @Published var alertItem: AlertItem?
+    @Published var text = ""
+    @Published var textName = ""
+    @Published var isDeleted = false
+    
     let containerBuilder = ContainerBuilder()
     var isAdded = false
-    var isDeleted = false
+
     func addReview(review: String,
                    nameOfReviewer: String,
                    id: String) {
@@ -47,6 +54,27 @@ final class ReviewsViewModel: ObservableObject {
                 }
             case .failure(let error):
                 print(error)
+            }
+        }
+    }
+    
+    func saveReview(id: String ) {
+        
+        if !text.isEmpty && !textName.isEmpty {
+            self.addReview(review: text,
+                                nameOfReviewer: textName,
+                                id: id)
+        } else {
+            self.alertItem = AlertItem(title: Text("Error"), message: Text("Enter your name and review"))
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.2) {
+            if self.isAdded {
+                self.alertItem = AlertItem(title: Text("Success"), message: Text("Your review has been added"))
+                self.text.removeAll()
+                self.textName.removeAll()
+            } else {
+                self.alertItem = AlertItem(title: Text("Error"), message: Text("Unknown error, try again later"))
             }
         }
     }

@@ -1,5 +1,5 @@
 //
-//  FakeBasket.swift
+//  ProductCartViewModel.swift
 //  Online_Shop
 //
 //  Created by Alexander Grigoryev on 7/26/22.
@@ -8,12 +8,14 @@
 import Foundation
 import SwiftUI
 
-final class FakeBasket: ObservableObject {
-    @Published var isEmpty = true
-    @Published var totalPrice = 0
+@MainActor final class ProductCartViewModel: ObservableObject {
+    @Published private var isEmpty = true
+    @Published private var isPaid = false
+    @Published private var userMessage = ""
     @Published var dictOfProducts: Dictionary<String, [Product]> = [:]
-    @Published var isPaid = false
-    @Published var userMessage = ""
+    @Published var alertItem: AlertItem?
+    @Published var totalPrice = 0
+    
     let containerBuilder = ContainerBuilder()
     
     func group(product: Product) {
@@ -51,5 +53,22 @@ final class FakeBasket: ObservableObject {
                 print(error)
             }
         }
+    }
+    
+    func payOnButton() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+            if self.isPaid {
+                self.alertItem = AlertItem(title: Text("Success"), message: Text("\(self.userMessage)"))
+                self.dictOfProducts.removeAll()
+                self.totalPrice = 0
+            } else {
+                self.alertItem = AlertItem(title:Text("Error"), message: Text("The payment is unsuccessful, please, try again"))
+            }
+        }
+    }
+    
+    func deleteAllProducts() {
+        self.dictOfProducts.removeAll()
+        self.totalPrice = 0
     }
 }

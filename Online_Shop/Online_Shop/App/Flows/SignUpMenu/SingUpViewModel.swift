@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-final class SingUpViewModel: ObservableObject {
+@MainActor final class SingUpViewModel: ObservableObject {
     let containerBuilder = ContainerBuilder()
     @Published var isRegistered = false
     @Published var isDataChanged = false

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ProductCell: View {
     let product: Product
-    @StateObject var basket: FakeBasket
+    @StateObject var basket: ProductCartViewModel
     @State var animation = false
     @State private var isChosen = false
     @State private var count = 0

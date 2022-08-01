@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class LoginViewModel: ObservableObject {
+@MainActor final class LoginViewModel: ObservableObject {
     @Published var loginResult = false
     let containerBuilder = ContainerBuilder()
     
