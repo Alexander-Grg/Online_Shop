@@ -15,7 +15,6 @@ class ContainerBuilder: AbstractRequestFactory {
     let errorParser: AbstractErrorParser = ErrorParser()
     let queue = DispatchQueue.global(qos: .utility)
     
-    
     func makeContainer() -> Container {
         let container = Container()
         container.register(AbstractErrorParser.self) { _ in ErrorParser()}
@@ -51,6 +50,19 @@ class ContainerBuilder: AbstractRequestFactory {
                                         sessionManager: resolver.resolve(Session.self)!,
                                         queue: self.queue)
         }
+        
+        container.register(AddReviewDataFactory.self) { resolver in
+            return AddReviewData(errorParser: resolver.resolve(AbstractErrorParser.self)!,
+                                 sessionManager: resolver.resolve(Session.self)!,
+                                 queue: self.queue)
+        }
+    
+        container.register(PayForProductsDataFactory.self) { resolver in
+            return PayForProducts(errorParser: resolver.resolve(AbstractErrorParser.self)!,
+                                  sessionManager: resolver.resolve(Session.self)!,
+                                  queue: self.queue)
+        }
+        
         return container
     }
 }

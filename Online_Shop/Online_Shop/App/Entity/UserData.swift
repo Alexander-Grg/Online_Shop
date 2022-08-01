@@ -15,9 +15,11 @@ struct UserData {
     let gender: Gender
     let creditCard: String
     let bio: String
+
 }
 
 enum Gender: String {
     case male = "m"
     case female = "f"
+    case choose = ""
 }

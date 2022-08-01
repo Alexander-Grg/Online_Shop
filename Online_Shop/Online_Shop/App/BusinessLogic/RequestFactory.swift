@@ -35,4 +35,12 @@ class RequestFactory {
     func makeSingleProductDataRequestFactory() -> GetSingleProductDataFactory {
         return container.resolve(GetSingleProductDataFactory.self)!
     }
+    
+    func makeAddReviewDataFactory() -> AddReviewDataFactory {
+        return container.resolve(AddReviewDataFactory.self)!
+    }
+    
+    func makePayForProductsDataFactory() -> PayForProductsDataFactory {
+        return container.resolve(PayForProductsDataFactory.self)!
+    }
 }

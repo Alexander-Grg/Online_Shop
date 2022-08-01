@@ -39,6 +39,7 @@ class AuthTest: XCTestCase {
                 self?.isAuthSuccesfull = data.result == 1 ? true : false
             case .failure(let error):
                 XCTFail(error.localizedDescription)
+                print(error)
             }
             self?.expectation.fulfill()
         }
