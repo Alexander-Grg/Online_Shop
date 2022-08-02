@@ -10,18 +10,15 @@ import SwiftUI
 struct ProductCell: View {
     let product: Product
     @StateObject var basket: ProductCartViewModel
-    @State var animation = false
-    @State private var isChosen = false
-    @State private var count = 0
     
     var body: some View {
         VStack {
             HStack {
                 Text(product.productName)
-                    .padding(.leading, 15)
+                    .padding(.leading, 5)
                 Spacer()
                 Text(" Price \(product.productPrice) $")
-                    .padding(.trailing, 15)
+                    .padding(.leading, 10)
                 Image(systemName: "minus.circle" )
                     .onTapGesture {
                         basket.dictOfProducts.forEach { key, value in
@@ -39,7 +36,6 @@ struct ProductCell: View {
                     }
                 
                 Text("\(basket.countProducts(product: product))")
-                    .padding(.trailing, 15)
             }
         }
     }

@@ -59,7 +59,6 @@ import SwiftUI
     }
     
     func saveReview(id: String ) {
-        
         if !text.isEmpty && !textName.isEmpty {
             self.addReview(review: text,
                                 nameOfReviewer: textName,
@@ -68,18 +67,18 @@ import SwiftUI
             self.alertItem = AlertItem(title: Text("Error"), message: Text("Enter your name and review"))
         }
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.2) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
             if self.isAdded {
                 self.alertItem = AlertItem(title: Text("Success"), message: Text("Your review has been added"))
-                self.text.removeAll()
-                self.textName.removeAll()
+                self.clearTheFields()
             } else {
                 self.alertItem = AlertItem(title: Text("Error"), message: Text("Unknown error, try again later"))
             }
         }
     }
     
-    public func reloadView() {
-        objectWillChange.send()
+    func clearTheFields() {
+        self.text.removeAll()
+        self.textName.removeAll()
     }
 }

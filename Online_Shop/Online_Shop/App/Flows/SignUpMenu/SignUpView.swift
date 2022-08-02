@@ -8,16 +8,7 @@
 import SwiftUI
 
 struct SignUpView: View {
-    
     @StateObject var viewModel: SingUpViewModel = SingUpViewModel()
-    @State private var alertItem: AlertItem?
-    @State private var id = ""
-    @State private var username = ""
-    @State private var password = ""
-    @State private var email = ""
-    @State private var gender: Gender = .choose
-    @State private var creditCard = ""
-    @State private var bio = ""
     
     var body: some View {
         VStack() {
@@ -30,19 +21,18 @@ struct SignUpView: View {
                 .padding(.top, 5.0)
             Form {
                 Group {
-                    TextField("User ID (Your unique number)", text: $id)
+                    TextField("User ID (Your unique number)", text: $viewModel.id)
                         .keyboardType(.numberPad)
-                    TextField("Name", text: $username)
-                    TextField("Password", text: $password)
-                    TextField("Email", text: $email)
-                    TextField("Credit Card", text: $creditCard)
-                    TextField("Bio", text: $bio)
+                    TextField("Name", text: $viewModel.username)
+                    TextField("Password", text: $viewModel.password)
+                    TextField("Email", text: $viewModel.email)
+                    TextField("Credit Card", text: $viewModel.creditCard)
+                    TextField("Bio", text: $viewModel.bio)
                 }
                 .textFieldStyle(.automatic)
                 .padding(.leading, 10.0)
-                
                 HStack {
-                    Picker(selection: $gender, label: Text("Select Gender")) {
+                    Picker(selection: $viewModel.gender, label: Text("Select Gender")) {
                         Text("Choose...").tag(Gender.choose)
                         Text("Male").tag(Gender.male)
                         Text("Female").tag(Gender.female)
@@ -52,46 +42,17 @@ struct SignUpView: View {
             Group {
                 HStack {
                     Button("Register") {
-                        
-                        let data = viewModel.createUser(id: id, username: username, password: password, email: email, gender: Gender(rawValue: gender.rawValue) ?? Gender.choose, creditCard: creditCard, bio: bio)
-                        
-                        if !id.isEmpty && !username.isEmpty && !password.isEmpty && !email.isEmpty && !creditCard.isEmpty && !bio.isEmpty && data.gender != .choose  {
-                            viewModel.register(userData: data)
-                            
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
-                                if viewModel.isRegistered {
-                                    self.alertItem = AlertItem(title: Text("Success"), message: Text("You've been registered"))
-                                } else {
-                                    self.alertItem = AlertItem(title: Text("Error"), message: Text("Registration failed, check out your data, ID can contain only numbers"))
-                                }
-                            }
-                        } else {
-                            self.alertItem = AlertItem(title: Text("Error"), message: Text("Each field needs to be filled"))
-                        }
+                        viewModel.registerOnButton()
                     }
                     Button("Update") {
-                        let newData = viewModel.createUser(id: id, username: username, password: password, email: email, gender: gender, creditCard: (Gender(rawValue: gender.rawValue) ?? Gender.choose).rawValue, bio: bio)
-                        viewModel.changeData(userData: newData)
-                        
-                        if viewModel.isDataChanged {
-                            self.alertItem = AlertItem(title: Text("Success"), message: Text("Your data has been updated"))
-                        } else {
-                            self.alertItem = AlertItem(title: Text("Error, try again"), message: Text("Data isn't updated, check out your data, ID can contain only numbers"))
-                        }
+                        viewModel.updateInfoOnButton()
                     }
                 }
             }   .buttonStyle(.bordered)
             
         }
-        .alert(item: $alertItem) { alertItem in
+        .alert(item: $viewModel.alertItem) { alertItem in
             Alert(title: alertItem.title, message: alertItem.message, dismissButton: alertItem.dismissButton)
         }
     }
 }
-
-struct SignUpView_Previews: PreviewProvider {
-    static var previews: some View {
-        SignUpView(viewModel: SingUpViewModel())
-    }
-}
-

@@ -46,6 +46,7 @@ extension ChangeUserData {
             return [
                 "id_user" : userData.id,
                 "username" : userData.username,
+                "password" : userData.password,
                 "email": userData.email,
                 "gender": userData.gender.rawValue,
                 "credit_card": userData.creditCard,

@@ -12,8 +12,6 @@ import SwiftUI
     @Published var productList: [Product] = []
     @Published var reviews: [ProductReviews] = []
     @Published var searchText = ""
-
-    
     let containerBuilder = ContainerBuilder()
     
     func getProductList(categoryID: String) {

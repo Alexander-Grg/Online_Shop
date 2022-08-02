@@ -12,13 +12,19 @@ struct ReviewsEntryField: View {
     @StateObject var mainMenuView: MainMenuViewModel
     let id: String
 
-    
     var body: some View {
         VStack {
-            TextField("Enter your name", text: $viewModel.textName)
-            TextField("Enter your review text", text: $viewModel.text)
+            Group {
+                TextField("Enter your name", text: $viewModel.textName)
+                TextField("Enter your review text", text: $viewModel.text)
+            }.textFieldStyle(.roundedBorder)
+            
             HStack {
-                Text("Cancel")
+                Button("Cancel", action: {
+                    viewModel.clearTheFields()
+                })
+                .foregroundColor(.red)
+                .buttonStyle(.bordered)
                     .padding(.leading, 5)
                 Spacer()
                 Button("Save") {
@@ -26,7 +32,8 @@ struct ReviewsEntryField: View {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
                         mainMenuView.getProductList(categoryID: mainMenuView.searchText)
                     }
-                }.padding(.trailing, 5.0)
+                }.buttonStyle(.bordered)
+                .padding(.trailing, 5.0)
                     .foregroundColor(.blue)
             }
             Spacer()
