@@ -8,13 +8,13 @@
 import Foundation
 
 struct UserData {
-    let id: Int
-    let username: String
-    let password: String
-    let email: String
-    let gender: Gender
-    let creditCard: String
-    let bio: String
+    var id: Int
+    var username: String
+    var password: String
+    var email: String
+    var gender: Gender
+    var creditCard: String
+    var bio: String
 
 }
 

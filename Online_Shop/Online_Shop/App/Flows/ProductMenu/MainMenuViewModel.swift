@@ -6,13 +6,13 @@
 //
 
 import Foundation
+import SwiftUI
 
-final class MainMenuViewModel: ObservableObject {
+@MainActor final class MainMenuViewModel: ObservableObject {
     @Published var productList: [Product] = []
+    @Published var reviews: [ProductReviews] = []
+    @Published var searchText = ""
     let containerBuilder = ContainerBuilder()
-    var productIndex: Int {
-        productList.firstIndex(where: {$0.id == $0.id})!
-    }
     
     func getProductList(categoryID: String) {
         let container = containerBuilder.makeContainer()

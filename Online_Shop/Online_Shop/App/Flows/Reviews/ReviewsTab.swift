@@ -11,9 +11,6 @@ struct ReviewsTab: View {
     let product: Product
     @StateObject var viewModel: MainMenuViewModel
     @StateObject var reviewViewModel: ReviewsViewModel
-    @Binding var searchText: String
-    @State private var isReviewAdded = false
-    @State private var alertItem: AlertItem?
 
     var body: some View {
         VStack {
@@ -21,8 +18,8 @@ struct ReviewsTab: View {
                 .font(.system(size: 30.0))
                 .bold()
             List (){
-                ForEach(product.productReviews ?? []) { review in
-                    Text(review.nameOfReviewer)
+                ForEach(product.productReviews ?? [], id: \.self) { review in
+                Text(review.nameOfReviewer)
                         .bold()
                     Text(review.review)
                         .italic()
@@ -30,23 +27,20 @@ struct ReviewsTab: View {
             }
             Button("Delete review") {
                 reviewViewModel.deleteReview(id: product.id)
-                self.alertItem = AlertItem(title: Text("Successful"), message: Text("The latest review has been deleted"))
-                viewModel.getProductList(categoryID: searchText)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
+                viewModel.getProductList(categoryID: viewModel.searchText)
+                }
+                reviewViewModel.alertItem = AlertItem(title: Text("Successful"), message: Text("The latest review has been deleted"))
             }
-        }
-        .onAppear(perform: {
-            if self.isReviewAdded {
-                viewModel.getProductList(categoryID: searchText)
-            }
-        })
-        .toolbar {
+            .foregroundColor(.red)
+        }.toolbar {
             NavigationLink {
-                WriteAReview(viewModel: reviewViewModel, id: product.id, isReviewAdded: $isReviewAdded)
+                ReviewsEntryField(viewModel: reviewViewModel, mainMenuView: viewModel, id: product.id)
             } label: {
                 Text("Write a review")
             }
         }
-        .alert(item: $alertItem) { alertItem in
+        .alert(item: $reviewViewModel.alertItem) { alertItem in
             Alert(title: alertItem.title, message: alertItem.message, dismissButton: alertItem.dismissButton)
         }
     }
