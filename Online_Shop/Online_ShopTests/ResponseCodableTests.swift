@@ -31,7 +31,6 @@ struct ErrorParserStub: AbstractErrorParser {
 }
 
 class ResponseCodableTests: XCTestCase {
-    
     let expectation = XCTestExpectation(description: "TestingResponse...")
     var errorParser: ErrorParserStub!
     

@@ -9,7 +9,6 @@ import XCTest
 @testable import Online_Shop
 
 class GetSingleProductDataTest: XCTestCase {
-    
     let expectation = XCTestExpectation(description: "SingleProductDataFetchingTest...")
     var getSingleProduct: GetSingleProductDataFactory!
     var isDataReceived: Bool!
@@ -39,5 +38,4 @@ class GetSingleProductDataTest: XCTestCase {
         }
         wait(for: [expectation], timeout: 10.0)
     }
-    
 }

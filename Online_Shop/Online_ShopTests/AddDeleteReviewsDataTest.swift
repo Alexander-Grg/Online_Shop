@@ -55,6 +55,4 @@ class AddDeleteReviewsDataTest: XCTestCase {
         }
         wait(for: [expectationOfDeletion], timeout: 10.0)
     }
-    
-
 }

@@ -11,17 +11,15 @@ import XCTest
 var app: XCUIApplication!
 
 class AuthTestUI: XCTestCase {
-
-    
     override func setUpWithError() throws {
         continueAfterFailure = false
         app = XCUIApplication()
     }
-
+    
     override func tearDownWithError() throws {
         app = nil
     }
-
+    
     func testLogin() {
         app.launch()
         let loginTextField = app.textFields["Login"]
@@ -30,13 +28,11 @@ class AuthTestUI: XCTestCase {
         
         loginTextField.tap()
         loginTextField.typeText("Admin")
-
+        
         passwordSecureField.tap()
         passwordSecureField.typeText("Password")
-
-        loginButton.tap()
         
-        print(app.debugDescription)
+        loginButton.tap()
         let next = app.tables["MainMenuTable"].firstMatch
         XCTAssert(next.waitForExistence(timeout: 5.0))
     }
