@@ -35,6 +35,7 @@ class AuthTestUI: XCTestCase {
         passwordSecureField.typeText("Password")
 
         loginButton.tap()
+//        loginButton.tap()
         print(app.debugDescription)
         
         let next = app.otherElements["MainMenu"].firstMatch

@@ -13,7 +13,7 @@ import SwiftUI
     @Published var password = ""
     @Published var alertItem: AlertItem?
     @Published var isLoading = false
-    var isLogin = false
+    @Published var isLogin = false
     var loginResult = false
     let containerBuilder = ContainerBuilder()
     
@@ -44,7 +44,7 @@ import SwiftUI
             self.alertItem = AlertItem(title: Text("Error"), message: Text("Please enter login and password"))
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
-            if self.loginResult {
+            if self.loginResult == true {
                 self.isLogin = true
                 self.isLoading = false
             }
