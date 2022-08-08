@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6204C4E5289D560800CF5A66 /* AuthTestUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6204C4E4289D560800CF5A66 /* AuthTestUI.swift */; };
+		6208CC21289D0A0400374005 /* AddDeleteReviewsDataTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6208CC20289D0A0300374005 /* AddDeleteReviewsDataTest.swift */; };
+		6208CC23289D0D4B00374005 /* GetPaymentTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6208CC22289D0D4B00374005 /* GetPaymentTest.swift */; };
 		620EBB71285A121500737F76 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 620EBB70285A121500737F76 /* Alamofire */; };
 		620EBB73285A12C300737F76 /* AbstractErrorParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 620EBB72285A12C300737F76 /* AbstractErrorParser.swift */; };
 		620EBB75285A12F100737F76 /* ErrorParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 620EBB74285A12F100737F76 /* ErrorParser.swift */; };
@@ -84,6 +87,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6204C4E4289D560800CF5A66 /* AuthTestUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthTestUI.swift; sourceTree = "<group>"; };
+		6208CC20289D0A0300374005 /* AddDeleteReviewsDataTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDeleteReviewsDataTest.swift; sourceTree = "<group>"; };
+		6208CC22289D0D4B00374005 /* GetPaymentTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPaymentTest.swift; sourceTree = "<group>"; };
 		620EBB72285A12C300737F76 /* AbstractErrorParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbstractErrorParser.swift; sourceTree = "<group>"; };
 		620EBB74285A12F100737F76 /* ErrorParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorParser.swift; sourceTree = "<group>"; };
 		620EBB76285A132E00737F76 /* DataRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataRequest.swift; sourceTree = "<group>"; };
@@ -230,6 +236,8 @@
 				6280E706286D8B8E0065A04C /* ChangeUserDataTest.swift */,
 				6280E70E286DA0A00065A04C /* GetCatalogDataTest.swift */,
 				62391C0D286DF45E00CBBFCA /* GetSingleProductDataTest.swift */,
+				6208CC20289D0A0300374005 /* AddDeleteReviewsDataTest.swift */,
+				6208CC22289D0D4B00374005 /* GetPaymentTest.swift */,
 			);
 			path = Online_ShopTests;
 			sourceTree = "<group>";
@@ -239,6 +247,7 @@
 			children = (
 				621F7B6928523E5E002AFA74 /* Online_ShopUITests.swift */,
 				621F7B6B28523E5E002AFA74 /* Online_ShopUITestsLaunchTests.swift */,
+				6204C4E4289D560800CF5A66 /* AuthTestUI.swift */,
 			);
 			path = Online_ShopUITests;
 			sourceTree = "<group>";
@@ -579,8 +588,10 @@
 			files = (
 				62391C0E286DF45E00CBBFCA /* GetSingleProductDataTest.swift in Sources */,
 				6280E70F286DA0A00065A04C /* GetCatalogDataTest.swift in Sources */,
+				6208CC21289D0A0400374005 /* AddDeleteReviewsDataTest.swift in Sources */,
 				6280E707286D8B8E0065A04C /* ChangeUserDataTest.swift in Sources */,
 				6299B00E286C480800873DBE /* RegistrationTest.swift in Sources */,
+				6208CC23289D0D4B00374005 /* GetPaymentTest.swift in Sources */,
 				627B2BDD286B42B900256E42 /* ResponseCodableTests.swift in Sources */,
 				627B2BE2286B51FB00256E42 /* AuthTest.swift in Sources */,
 			);
@@ -590,6 +601,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6204C4E5289D560800CF5A66 /* AuthTestUI.swift in Sources */,
 				621F7B6A28523E5E002AFA74 /* Online_ShopUITests.swift in Sources */,
 				621F7B6C28523E5E002AFA74 /* Online_ShopUITestsLaunchTests.swift in Sources */,
 			);

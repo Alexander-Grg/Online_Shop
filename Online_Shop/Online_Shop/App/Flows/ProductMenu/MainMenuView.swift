@@ -13,6 +13,7 @@ struct MainMenuView: View {
     @StateObject var basket: ProductCartViewModel = ProductCartViewModel()
 
     var body: some View {
+        NavigationView {
         VStack {
             Text("Online Shop")
                 .font(.largeTitle.bold())
@@ -34,8 +35,9 @@ struct MainMenuView: View {
                         ProductCell(product: product, basket: basket)
                     }
                 }
-                }
+            }
         }
+        }.accessibilityIdentifier("MainMenu")
         .toolbar {
             NavigationLink {
                 ProductCart(basket: basket)
