@@ -35,10 +35,9 @@ class AuthTestUI: XCTestCase {
         passwordSecureField.typeText("Password")
 
         loginButton.tap()
-//        loginButton.tap()
-        print(app.debugDescription)
         
-        let next = app.otherElements["MainMenu"].firstMatch
+        print(app.debugDescription)
+        let next = app.tables["MainMenuTable"].firstMatch
         XCTAssert(next.waitForExistence(timeout: 5.0))
     }
 }
