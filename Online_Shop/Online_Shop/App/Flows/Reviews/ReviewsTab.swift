@@ -14,7 +14,7 @@ struct ReviewsTab: View {
 
     var body: some View {
         VStack {
-            Text("Reviews")
+            Text("\(product.productName) reviews")
                 .font(.system(size: 30.0))
                 .bold()
             List (){
