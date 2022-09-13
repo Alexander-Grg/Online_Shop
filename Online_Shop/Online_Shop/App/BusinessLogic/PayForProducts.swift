@@ -49,7 +49,5 @@ extension PayForProducts {
                 "totalPrice" : totalPrice
             ]
         }
-        
-        
     }
 }

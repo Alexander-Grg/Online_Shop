@@ -7,7 +7,6 @@
 
 import XCTest
 @testable import Online_Shop
-
 let userDataStub = UserData(    id: 123,
                                 username: "userTest",
                                 password: "qwerty123",
@@ -34,8 +33,6 @@ class RegistrationTest: XCTestCase {
     }
 
     func testRegister() {
-        
-        
      registration.register(userData: userDataStub) { [weak self] response in
             switch response.result {
             case .success(let data):
@@ -48,5 +45,4 @@ class RegistrationTest: XCTestCase {
         wait(for: [expectation], timeout: 10.0)
         XCTAssertTrue(isRegistered, "Not registered")
     }
-    
 }

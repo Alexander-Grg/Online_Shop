@@ -14,10 +14,11 @@ struct MainMenuView: View {
 
     var body: some View {
         VStack {
-            Text("Online Shop")
-                .font(.largeTitle.bold())
-            Text("Please enter single product ID(Example: m1, d1, etc.), or category ID(d - drink, m - meals), to get a product list")
-                .padding(.top, 10)
+            Text("""
+                 Please enter single product ID (m1, d1, etc.)
+                 or category ID to get a product list (d - drink, m - meals)
+                 """)
+                .padding(.top, 5)
             TextField("Enter a search request", text: $viewModel.searchText)
                 .textFieldStyle(.roundedBorder)
                 .textInputAutocapitalization(.never)
@@ -25,7 +26,6 @@ struct MainMenuView: View {
                 .onChange(of: viewModel.searchText) { _ in
                     viewModel.getProductList(categoryID: viewModel.searchText)
                 }
-            
             List() {
                 ForEach(viewModel.productList, id: \.self) { product in
                     NavigationLink {
@@ -34,7 +34,8 @@ struct MainMenuView: View {
                         ProductCell(product: product, basket: basket)
                     }
                 }
-                }
+            }.accessibilityIdentifier("MainMenuTable")
+            Spacer()
         }
         .toolbar {
             NavigationLink {
@@ -43,6 +44,9 @@ struct MainMenuView: View {
                 Image(systemName: "cart.circle")
             }
         }
+        .navigationViewStyle(.stack)
+        .navigationBarTitleDisplayMode(.large)
+        .navigationTitle("Online Shop")
     }
 }
 

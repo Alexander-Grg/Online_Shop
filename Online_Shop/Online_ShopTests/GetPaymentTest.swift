@@ -1,38 +1,38 @@
 //
-//  GetSingleProductDataTest.swift
+//  GetPaymentTest.swift
 //  Online_ShopTests
 //
-//  Created by Alexander Grigoryev on 6/30/22.
+//  Created by Alexander Grigoryev on 8/5/22.
 //
 
 import XCTest
 @testable import Online_Shop
 
-class GetSingleProductDataTest: XCTestCase {
-    let expectation = XCTestExpectation(description: "SingleProductDataFetchingTest...")
-    var getSingleProduct: GetSingleProductDataFactory!
+class GetPaymentTest: XCTestCase {
+    let expectation = XCTestExpectation(description: "Getting payment response...")
+    var getPayment: PayForProductsDataFactory!
     var isDataReceived: Bool!
     
     override func setUpWithError() throws {
         let container = ContainerBuilder().makeContainer()
         let factory = RequestFactory(container: container)
-        getSingleProduct = factory.makeSingleProductDataRequestFactory()
+        getPayment = factory.makePayForProductsDataFactory()
         isDataReceived = false
     }
-    
+
     override func tearDownWithError() throws {
-        getSingleProduct = nil
+        getPayment = nil
         isDataReceived = nil
     }
-    
-    func testGetSingleData() {
-        getSingleProduct.getData(id: "m1") { [weak self] response in
+
+    func testPayment() {
+        getPayment.pay(totalPrice: 50) { [weak self] response in
             switch response.result {
             case .success(let data):
                 self?.isDataReceived = data.result == 1 ? true : false
             case .failure(let error):
-                XCTFail()
                 print(error)
+                XCTFail()
             }
             self?.expectation.fulfill()
         }
