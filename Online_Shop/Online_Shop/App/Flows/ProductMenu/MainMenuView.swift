@@ -14,7 +14,10 @@ struct MainMenuView: View {
 
     var body: some View {
         VStack {
-            Text("Please enter single product ID(Example: m1, d1, etc.), or category ID(d - drink, m - meals), to get a product list")
+            Text("""
+                 Please enter single product ID (m1, d1, etc.)
+                 or category ID to get a product list (d - drink, m - meals)
+                 """)
                 .padding(.top, 5)
             TextField("Enter a search request", text: $viewModel.searchText)
                 .textFieldStyle(.roundedBorder)

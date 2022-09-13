@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6203241F28C66A8900EE43BE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6203241E28C66A8900EE43BE /* GoogleService-Info.plist */; };
+		6203242028C66A8900EE43BE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6203241E28C66A8900EE43BE /* GoogleService-Info.plist */; };
+		6203242128C66A8900EE43BE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6203241E28C66A8900EE43BE /* GoogleService-Info.plist */; };
 		6204C4E5289D560800CF5A66 /* AuthTestUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6204C4E4289D560800CF5A66 /* AuthTestUI.swift */; };
 		6208CC21289D0A0400374005 /* AddDeleteReviewsDataTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6208CC20289D0A0300374005 /* AddDeleteReviewsDataTest.swift */; };
 		6208CC23289D0D4B00374005 /* GetPaymentTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6208CC22289D0D4B00374005 /* GetPaymentTest.swift */; };
@@ -33,6 +36,7 @@
 		62391C0E286DF45E00CBBFCA /* GetSingleProductDataTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62391C0D286DF45E00CBBFCA /* GetSingleProductDataTest.swift */; };
 		62436F9D288153EE00EDD9B1 /* AlertItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62436F9C288153EE00EDD9B1 /* AlertItem.swift */; };
 		62436F9F2881607300EDD9B1 /* MainMenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62436F9E2881607300EDD9B1 /* MainMenuViewModel.swift */; };
+		624AA12A28D075DE00D5C850 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 624AA12928D075DE00D5C850 /* FirebaseCrashlytics */; };
 		627B2BDD286B42B900256E42 /* ResponseCodableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 627B2BDC286B42B900256E42 /* ResponseCodableTests.swift */; };
 		627B2BDF286B44BC00256E42 /* ChangeUserDataResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E0670C285C718100E71923 /* ChangeUserDataResult.swift */; };
 		627B2BE0286B44C100256E42 /* ChangeUserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E06719285CC6F600E71923 /* ChangeUserData.swift */; };
@@ -87,6 +91,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6203241E28C66A8900EE43BE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6204C4E4289D560800CF5A66 /* AuthTestUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthTestUI.swift; sourceTree = "<group>"; };
 		6208CC20289D0A0300374005 /* AddDeleteReviewsDataTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDeleteReviewsDataTest.swift; sourceTree = "<group>"; };
 		6208CC22289D0D4B00374005 /* GetPaymentTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPaymentTest.swift; sourceTree = "<group>"; };
@@ -155,6 +160,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				624AA12A28D075DE00D5C850 /* FirebaseCrashlytics in Frameworks */,
 				620EBB71285A121500737F76 /* Alamofire in Frameworks */,
 				62E06710285C79A500E71923 /* Swinject in Frameworks */,
 			);
@@ -212,6 +218,7 @@
 		621F7B4D28523E5C002AFA74 /* Online_Shop */ = {
 			isa = PBXGroup;
 			children = (
+				6203241E28C66A8900EE43BE /* GoogleService-Info.plist */,
 				621F7B7C28524580002AFA74 /* App */,
 				621F7B7F2852459E002AFA74 /* Environments */,
 				621F7B7E28524594002AFA74 /* Resources */,
@@ -406,6 +413,7 @@
 				621F7B4728523E5C002AFA74 /* Sources */,
 				621F7B4828523E5C002AFA74 /* Frameworks */,
 				621F7B4928523E5C002AFA74 /* Resources */,
+				628E497E28C7817B00BD34A0 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -415,6 +423,7 @@
 			packageProductDependencies = (
 				620EBB70285A121500737F76 /* Alamofire */,
 				62E0670F285C79A500E71923 /* Swinject */,
+				624AA12928D075DE00D5C850 /* FirebaseCrashlytics */,
 			);
 			productName = Online_Shop;
 			productReference = 621F7B4B28523E5C002AFA74 /* Online_Shop.app */;
@@ -491,6 +500,7 @@
 			packageReferences = (
 				620EBB6F285A121500737F76 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				62E0670E285C79A500E71923 /* XCRemoteSwiftPackageReference "Swinject" */,
+				624AA12828D075DE00D5C850 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = 621F7B4C28523E5C002AFA74 /* Products */;
 			projectDirPath = "";
@@ -510,6 +520,7 @@
 			files = (
 				621F7B5628523E5E002AFA74 /* Preview Assets.xcassets in Resources */,
 				621F7B5328523E5E002AFA74 /* Assets.xcassets in Resources */,
+				6203241F28C66A8900EE43BE /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -517,6 +528,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6203242028C66A8900EE43BE /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -524,10 +536,33 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6203242128C66A8900EE43BE /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		628E497E28C7817B00BD34A0 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${TARGET_NAME}",
+				"$(SRCROOT)/$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "${BUILD_DIR%/Build/*}/SourcePackages/checkouts/firebase-ios-sdk/Crashlytics/run\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		621F7B4728523E5C002AFA74 /* Sources */ = {
@@ -656,7 +691,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -921,6 +956,14 @@
 				minimumVersion = 5.6.0;
 			};
 		};
+		624AA12828D075DE00D5C850 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		62E0670E285C79A500E71923 /* XCRemoteSwiftPackageReference "Swinject" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Swinject/Swinject.git";
@@ -936,6 +979,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 620EBB6F285A121500737F76 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
+		};
+		624AA12928D075DE00D5C850 /* FirebaseCrashlytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 624AA12828D075DE00D5C850 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCrashlytics;
 		};
 		62E0670F285C79A500E71923 /* Swinject */ = {
 			isa = XCSwiftPackageProductDependency;
