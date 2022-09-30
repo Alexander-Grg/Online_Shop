@@ -43,7 +43,7 @@ import SwiftUI
         } else {
             self.alertItem = AlertItem(title: Text("Error"), message: Text("Please enter login and password"))
         }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
             if self.loginResult == true {
                 self.isLogin = true
                 self.isLoading = false
