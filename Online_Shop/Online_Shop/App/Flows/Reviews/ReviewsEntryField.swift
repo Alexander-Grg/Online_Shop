@@ -37,7 +37,8 @@ struct ReviewsEntryField: View {
                     .foregroundColor(.blue)
             }
             Spacer()
-        }.alert(item: $viewModel.alertItem) { alertItem in
+        }.navigationTitle("Write a review")
+        .alert(item: $viewModel.alertItem) { alertItem in
             Alert(title: alertItem.title, message: alertItem.message, dismissButton: alertItem.dismissButton)
         }
     }

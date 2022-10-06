@@ -9,11 +9,9 @@ import XCTest
 @testable import Online_Shop
 
 class GetCatalogDataTest: XCTestCase {
-    
     let expectation = XCTestExpectation(description: "GetCatalogDataTesting...")
     var isGotCatalog: Bool!
     var getCatalog: GetCatalogDataFactory!
-    
     
     override func setUpWithError() throws {
         let container = ContainerBuilder().makeContainer()
@@ -29,19 +27,18 @@ class GetCatalogDataTest: XCTestCase {
     
     func testGetCatalogData() {
         getCatalog.getData(
-                           categoryID: "") { [weak self] response in
-            switch response.result {
-            case .success(let data):
-                self?.isGotCatalog = data.products.isEmpty ? false : true
-                
-            case .failure(let error):
-                XCTFail()
-                print(error)
+            categoryID: "d") { [weak self] response in
+                switch response.result {
+                case .success(let data):
+                    self?.isGotCatalog = data.products.isEmpty ? false : true
+                    
+                case .failure(let error):
+                    XCTFail()
+                    print(error)
+                }
+                self?.expectation.fulfill()
             }
-            self?.expectation.fulfill()
-        }
         wait(for: [expectation], timeout: 10.0)
         XCTAssertTrue(isGotCatalog, "CatalogData hasn't been received")
     }
-    
 }

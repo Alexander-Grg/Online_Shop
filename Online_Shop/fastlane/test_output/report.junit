@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<testsuites name='Online_ShopUITests.xctest' tests='11' failures='0'>
+  <testsuite name='Online_ShopTests.AddDeleteReviewsDataTest' tests='2' failures='0'>
+    <testcase classname='Online_ShopTests.AddDeleteReviewsDataTest' name='testByAddingReviews' time='0.535'/>
+    <testcase classname='Online_ShopTests.AddDeleteReviewsDataTest' name='testOfDeletionReviews' time='0.501'/>
+  </testsuite>
+  <testsuite name='Online_ShopTests.AuthTest' tests='2' failures='0'>
+    <testcase classname='Online_ShopTests.AuthTest' name='testLogin' time='0.531'/>
+    <testcase classname='Online_ShopTests.AuthTest' name='testLogout' time='0.540'/>
+  </testsuite>
+  <testsuite name='Online_ShopTests.ChangeUserDataTest' tests='1' failures='0'>
+    <testcase classname='Online_ShopTests.ChangeUserDataTest' name='testChangeDataFunctional' time='0.543'/>
+  </testsuite>
+  <testsuite name='Online_ShopTests.GetCatalogDataTest' tests='1' failures='0'>
+    <testcase classname='Online_ShopTests.GetCatalogDataTest' name='testGetCatalogData' time='0.540'/>
+  </testsuite>
+  <testsuite name='Online_ShopTests.GetPaymentTest' tests='1' failures='0'>
+    <testcase classname='Online_ShopTests.GetPaymentTest' name='testPayment' time='0.512'/>
+  </testsuite>
+  <testsuite name='Online_ShopTests.GetSingleProductDataTest' tests='1' failures='0'>
+    <testcase classname='Online_ShopTests.GetSingleProductDataTest' name='testGetSingleData' time='0.543'/>
+  </testsuite>
+  <testsuite name='Online_ShopTests.RegistrationTest' tests='1' failures='0'>
+    <testcase classname='Online_ShopTests.RegistrationTest' name='testRegister' time='0.526'/>
+  </testsuite>
+  <testsuite name='Online_ShopTests.ResponseCodableTests' tests='1' failures='0'>
+    <testcase classname='Online_ShopTests.ResponseCodableTests' name='testShouldDownloadAndParse' time='0.088'/>
+  </testsuite>
+  <testsuite name='Online_ShopUITests.AuthTestUI' tests='1' failures='0'>
+    <testcase classname='Online_ShopUITests.AuthTestUI' name='testLogin' time='7.668'/>
+  </testsuite>
+</testsuites>

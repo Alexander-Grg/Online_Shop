@@ -9,7 +9,6 @@ import XCTest
 @testable import Online_Shop
 
 class GetSingleProductDataTest: XCTestCase {
-    
     let expectation = XCTestExpectation(description: "SingleProductDataFetchingTest...")
     var getSingleProduct: GetSingleProductDataFactory!
     var isDataReceived: Bool!
@@ -28,16 +27,17 @@ class GetSingleProductDataTest: XCTestCase {
     
     func testGetSingleData() {
         getSingleProduct.getData(id: "m1") { [weak self] response in
-            switch response.result {
-            case .success(let data):
-                self?.isDataReceived = data.result == 1 ? true : false
-            case .failure(let error):
-                XCTFail()
-                print(error)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                switch response.result {
+                case .success(let data):
+                    self?.isDataReceived = data.result == 1 ? true : false
+                case .failure(let error):
+                    XCTFail()
+                    print(error)
+                }
             }
             self?.expectation.fulfill()
         }
         wait(for: [expectation], timeout: 10.0)
     }
-    
 }

@@ -15,7 +15,10 @@ struct ProductCell: View {
         VStack {
             HStack {
                 Text(product.productName)
+                    .lineLimit(1)
                     .padding(.leading, 5)
+                    .allowsTightening(/*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
+                    
                 Spacer()
                 Text(" Price \(product.productPrice) $")
                     .padding(.leading, 10)

@@ -7,6 +7,8 @@
 
 import XCTest
 import Alamofire
+import Firebase
+
 @testable import Online_Shop
 
 struct PostStub: Codable {
@@ -31,7 +33,6 @@ struct ErrorParserStub: AbstractErrorParser {
 }
 
 class ResponseCodableTests: XCTestCase {
-    
     let expectation = XCTestExpectation(description: "TestingResponse...")
     var errorParser: ErrorParserStub!
     

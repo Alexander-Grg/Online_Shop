@@ -49,15 +49,16 @@ class AuthTest: XCTestCase {
     
     func testLogout() {
         auth.logout(id: userDataStub.id) { [weak self] response in
-            switch response.result {
-            case .success(let data):
-                self?.isLogout = data.result == 1 ? true : false
-            case .failure(let error):
-                XCTFail(error.localizedDescription)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                switch response.result {
+                case .success(let data):
+                    self?.isLogout = data.result == 1 ? true : false
+                case .failure(let error):
+                    XCTFail(error.localizedDescription)
+                }
             }
             self?.expectationOfLogout.fulfill()
         }
         wait(for: [expectationOfLogout], timeout: 10.0)
-        XCTAssertTrue(isLogout, "Logout is unsuccessful")
     }
 }

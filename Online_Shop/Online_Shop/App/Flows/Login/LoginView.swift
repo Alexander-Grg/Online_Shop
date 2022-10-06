@@ -12,14 +12,6 @@ struct LoginView: View {
     
     var body: some View {
         NavigationView {
-            ZStack {
-                GeometryReader { geometry in
-                    Image("wallpaper")
-                        .resizable()
-                        .edgesIgnoringSafeArea(.all)
-                        .aspectRatio(contentMode: .fill)
-                        .frame(maxWidth: geometry.size.width, maxHeight: geometry.size.height)
-                }
                 VStack {
                     Text("Online Shop")
                         .font(.system(.largeTitle, design: .rounded))
@@ -47,10 +39,17 @@ struct LoginView: View {
                             .foregroundColor(.white)
                     }
                     Spacer()
-                }
-            }.alert(item: $viewModel.alertItem) { alertItem in
+                }.background(
+                    Image("wallpaper")
+                        .resizable()
+                        .edgesIgnoringSafeArea(.all)
+                        .aspectRatio(contentMode: .fill)
+                )
+                    
+                
+            .alert(item: $viewModel.alertItem) { alertItem in
                 Alert(title: alertItem.title, message: alertItem.message, dismissButton: alertItem.dismissButton)
             }
-        }
+        }.accessibilityIdentifier("LoginScreen")
     }
 }
