@@ -27,12 +27,14 @@ class GetSingleProductDataTest: XCTestCase {
     
     func testGetSingleData() {
         getSingleProduct.getData(id: "m1") { [weak self] response in
-            switch response.result {
-            case .success(let data):
-                self?.isDataReceived = data.result == 1 ? true : false
-            case .failure(let error):
-                XCTFail()
-                print(error)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                switch response.result {
+                case .success(let data):
+                    self?.isDataReceived = data.result == 1 ? true : false
+                case .failure(let error):
+                    XCTFail()
+                    print(error)
+                }
             }
             self?.expectation.fulfill()
         }

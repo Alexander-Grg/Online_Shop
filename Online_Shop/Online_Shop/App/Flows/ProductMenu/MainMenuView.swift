@@ -22,6 +22,7 @@ struct MainMenuView: View {
             TextField("Enter a search request", text: $viewModel.searchText)
                 .textFieldStyle(.roundedBorder)
                 .textInputAutocapitalization(.never)
+                .accessibilityIdentifier("NextField")
                 .textCase(.lowercase)
                 .onChange(of: viewModel.searchText) { _ in
                     viewModel.getProductList(categoryID: viewModel.searchText)

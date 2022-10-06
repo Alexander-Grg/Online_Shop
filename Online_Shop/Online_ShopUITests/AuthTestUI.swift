@@ -8,9 +8,9 @@
 import XCTest
 @testable import Online_Shop
 
-var app: XCUIApplication!
-
 class AuthTestUI: XCTestCase {
+    var app: XCUIApplication!
+    
     override func setUpWithError() throws {
         continueAfterFailure = false
         app = XCUIApplication()
@@ -33,7 +33,8 @@ class AuthTestUI: XCTestCase {
         passwordSecureField.typeText("Password")
         
         loginButton.tap()
-        let next = app.tables["MainMenuTable"].firstMatch
-        XCTAssert(next.waitForExistence(timeout: 5.0))
+        print(app.debugDescription)
+        let nextElement = app.textFields["NextField"].firstMatch
+        XCTAssert(nextElement.waitForExistence(timeout: 5.0))
     }
 }

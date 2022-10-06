@@ -27,7 +27,7 @@ class GetCatalogDataTest: XCTestCase {
     
     func testGetCatalogData() {
         getCatalog.getData(
-            categoryID: "") { [weak self] response in
+            categoryID: "d") { [weak self] response in
                 switch response.result {
                 case .success(let data):
                     self?.isGotCatalog = data.products.isEmpty ? false : true
