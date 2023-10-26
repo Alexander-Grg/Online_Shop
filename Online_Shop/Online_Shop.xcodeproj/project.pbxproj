@@ -227,7 +227,6 @@
 			children = (
 				6203241E28C66A8900EE43BE /* GoogleService-Info.plist */,
 				621F7B7C28524580002AFA74 /* App */,
-				621F7B7F2852459E002AFA74 /* Environments */,
 				621F7B7E28524594002AFA74 /* Resources */,
 			);
 			path = Online_Shop;
@@ -316,7 +315,6 @@
 		621F7B7C28524580002AFA74 /* App */ = {
 			isa = PBXGroup;
 			children = (
-				62CCD47028900272003FA1E6 /* Helpers */,
 				621F7B4E28523E5C002AFA74 /* Online_ShopApp.swift */,
 				62F02095287EC7CA004F22C4 /* Flows */,
 				621F7B7A28524541002AFA74 /* Assembly */,
@@ -333,13 +331,6 @@
 				621F7B5228523E5E002AFA74 /* Assets.xcassets */,
 			);
 			path = Resources;
-			sourceTree = "<group>";
-		};
-		621F7B7F2852459E002AFA74 /* Environments */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Environments;
 			sourceTree = "<group>";
 		};
 		628208A82880073200F9C682 /* ProductMenu */ = {
@@ -370,13 +361,6 @@
 			path = ProductBasket;
 			sourceTree = "<group>";
 		};
-		62CCD47028900272003FA1E6 /* Helpers */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Helpers;
-			sourceTree = "<group>";
-		};
 		62E319D128EEE42000D82E25 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -397,11 +381,11 @@
 		62F02095287EC7CA004F22C4 /* Flows */ = {
 			isa = PBXGroup;
 			children = (
+				62F02096287EC7DA004F22C4 /* Login */,
 				62CCD46B288FF99B003FA1E6 /* ProductBasket */,
 				62ED506528859880000A509D /* Reviews */,
 				628208AB288007ED00F9C682 /* SignUpMenu */,
 				628208A82880073200F9C682 /* ProductMenu */,
-				62F02096287EC7DA004F22C4 /* Login */,
 			);
 			path = Flows;
 			sourceTree = "<group>";
