@@ -9,7 +9,7 @@ import Foundation
 import Alamofire
 
 class PayForProducts: AbstractRequestFactory {
-    let baseUrl = URL(string: "https://gentle-depths-89634.herokuapp.com/")!
+    let baseUrl = URL(string: "https://online-shop-personal-a2a078cc9446.herokuapp.com/")!
     var errorParser: AbstractErrorParser
     var sessionManager: Session
     var queue: DispatchQueue

@@ -19,8 +19,12 @@ struct LoginView: View {
                         .foregroundColor(.yellow)
                     TextField("Login", text: $viewModel.login)
                         .textFieldStyle(.roundedBorder)
+                        .autocorrectionDisabled()
+                        .textInputAutocapitalization(.never)
                     SecureField("Password", text: $viewModel.password)
                         .textFieldStyle(.roundedBorder)
+                        .autocorrectionDisabled()
+                        .textInputAutocapitalization(.never)
                     NavigationLink(isActive: $viewModel.isLogin) {
                         MainMenuView()
                     } label: {
